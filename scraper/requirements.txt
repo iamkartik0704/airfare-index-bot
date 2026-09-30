@@ -7,3 +7,7 @@ numpy>=1.26
 pydantic>=2.7
 python-dateutil>=2.9
 pytest>=8.0
+duckdb>=1.0.0
+fastapi>=0.111.0
+uvicorn>=0.30.0
+scrapling>=0.2.0

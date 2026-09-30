@@ -1,11 +1,10 @@
-import { useQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
+import { useApi } from "@/hooks/useApi";
 import { ElasticityLine } from "@/components/charts";
 import { Delta, KeyVal, Label, Loading, Panel, Stat, Table, TD, TR, Tag } from "@/components/neo";
 
 export default function LeadTime() {
-  const el = useQuery(api.apix.elasticity);
-  const subs = useQuery(api.apix.subIndexSeries);
+  const el = useApi("elasticity");
+  const subs = useApi("subIndexSeries");
   if (!el || !subs) return <Loading label="Fitting booking curve" />;
 
   const trough = el.points.find((p) => p.leadTime === el.optimalLead)!;

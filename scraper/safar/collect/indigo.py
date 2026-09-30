@@ -52,18 +52,23 @@ class IndiGoAdapter(SourceAdapter):
         )
         return f"{self.endpoint}?{query}"
 
-    def parse(self, html: str, ctx: dict[str, Any]) -> list[RawQuote]:
-        """`html` is the rendered DOM; ctx carries the search we issued."""
+    def parse(self, page: Any, ctx: dict[str, Any]) -> list[RawQuote]:
+        """`page` is the scrapling Response object; ctx carries the search we issued."""
         quotes: list[RawQuote] = []
-        # In production this is a Playwright `page.query_selector_all` loop over
-        # `self.selectors.container`; the HTML string form is kept here so the
-        # parser is unit-testable without a browser.
-        for block in re.findall(r"<article[^>]*flight-list-item[^>]*>(.*?)</article>", html, re.S):
-            fare = _text(block, "price")
+        
+        def extract_text(node, selector):
+            els = node.css(selector)
+            return els[0].xpath('string()').get().strip() if els else ""
+
+        for block in page.css(self.selectors.container):
+            fare = extract_text(block, self.selectors.fare_amount)
             if not fare:
                 continue
-            flight_raw = _text(block, "flight-number")
+            flight_raw = extract_text(block, self.selectors.flight_number)
             match = FLIGHT_RE.search(flight_raw.replace(" ", ""))
+            
+            fare_class = extract_text(block, self.selectors.fare_class)
+            
             quotes.append(
                 RawQuote(
                     source_id=self.source_id,
@@ -73,14 +78,14 @@ class IndiGoAdapter(SourceAdapter):
                     destination=ctx["destination"],
                     departure=departure_for(ctx["day"], ctx["lead"]),
                     lead_time=ctx["lead"],
-                    fare_class=_text(block, "fare-family") or "VALUE",
+                    fare_class=fare_class or "VALUE",
                     flight_no=match.group(0) if match else flight_raw,
                     fare_text=fare,
-                    tax_text=_text(block, "fare-breakup") or "inclusive of taxes",
+                    tax_text="inclusive of taxes",
                     fee_text="—",
-                    seats_left=_int(_text(block, "seat-availability")),
-                    refundable="flex" in _text(block, "fare-family").lower(),
-                    baggage_kg=15 if "lite" in _text(block, "fare-family").lower() else 25,
+                    seats_left=_int(extract_text(block, self.selectors.seats_left)),
+                    refundable="flex" in fare_class.lower(),
+                    baggage_kg=15 if "lite" in fare_class.lower() else 25,
                     collected_at=ctx["collected_at"],
                 )
             )
@@ -122,14 +127,22 @@ class MakeMyTripAdapter(SourceAdapter):
         )
         return f"{self.endpoint}?{query}"
 
-    def parse(self, html: str, ctx: dict[str, Any]) -> list[RawQuote]:
+    def parse(self, page: Any, ctx: dict[str, Any]) -> list[RawQuote]:
         quotes: list[RawQuote] = []
-        for block in re.findall(r"<div[^>]*data-type=[\"']flight[\"'][^>]*>(.*?)</article>", html, re.S):
-            fare = _text(block, "fareSummary")
+        
+        def extract_text(node, selector):
+            els = node.css(selector)
+            return els[0].xpath('string()').get().strip() if els else ""
+
+        for block in page.css(self.selectors.container):
+            fare = extract_text(block, self.selectors.fare_amount)
             if not fare:
                 continue
-            flight_raw = _text(block, "flight-no").replace(" ", "")
+            flight_raw = extract_text(block, self.selectors.flight_number).replace(" ", "")
             carrier = flight_raw[:2] if len(flight_raw) >= 2 else "XX"
+            
+            fare_class = extract_text(block, self.selectors.fare_class)
+            
             quotes.append(
                 RawQuote(
                     source_id=self.source_id,
@@ -139,13 +152,13 @@ class MakeMyTripAdapter(SourceAdapter):
                     destination=ctx["destination"],
                     departure=departure_for(ctx["day"], ctx["lead"]),
                     lead_time=ctx["lead"],
-                    fare_class=_text(block, "fare-type") or "VALUE",
+                    fare_class=fare_class or "VALUE",
                     flight_no=flight_raw,
                     fare_text=f"₹{int(parse_rupees(fare)):,}",
                     tax_text="inclusive of taxes",
                     fee_text="+ 48 convenience fee",
-                    seats_left=_int(_text(block, "seat-count")),
-                    refundable="flex" in _text(block, "fare-type").lower(),
+                    seats_left=_int(extract_text(block, self.selectors.seats_left)),
+                    refundable="flex" in fare_class.lower(),
                     baggage_kg=15,
                     collected_at=ctx["collected_at"],
                 )

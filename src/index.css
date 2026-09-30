@@ -143,126 +143,128 @@
 
 /* ------------------------------------------------------------ primitives -- */
 
-.neo {
-  border: 3px solid var(--ink);
-  background: var(--card);
-}
+@layer components {
+  .neo {
+    border: 3px solid var(--ink);
+    background-color: var(--card);
+  }
 
-.neo-2 {
-  border: 2px solid var(--ink);
-}
+  .neo-2 {
+    border: 2px solid var(--ink);
+  }
 
-.neo-shadow {
-  box-shadow: 6px 6px 0 var(--ink);
-}
+  .neo-shadow {
+    box-shadow: 6px 6px 0 var(--ink);
+  }
 
-.neo-shadow-sm {
-  box-shadow: 4px 4px 0 var(--ink);
-}
+  .neo-shadow-sm {
+    box-shadow: 4px 4px 0 var(--ink);
+  }
 
-.neo-shadow-xs {
-  box-shadow: 3px 3px 0 var(--ink);
-}
+  .neo-shadow-xs {
+    box-shadow: 3px 3px 0 var(--ink);
+  }
 
-.neo-press {
-  transition:
-    transform 90ms steps(2, end),
-    box-shadow 90ms steps(2, end);
-}
+  .neo-press {
+    transition:
+      transform 90ms steps(2, end),
+      box-shadow 90ms steps(2, end);
+  }
 
-.neo-press:hover {
-  transform: translate(-2px, -2px);
-  box-shadow: 8px 8px 0 var(--ink);
-}
+  .neo-press:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0 var(--ink);
+  }
 
-.neo-press:active {
-  transform: translate(4px, 4px);
-  box-shadow: 0 0 0 var(--ink);
-}
+  .neo-press:active {
+    transform: translate(4px, 4px);
+    box-shadow: 0 0 0 var(--ink);
+  }
 
-.neo-grid {
-  background-image:
-    linear-gradient(to right, rgba(11, 11, 11, 0.09) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(11, 11, 11, 0.09) 1px, transparent 1px);
-  background-size: 28px 28px;
-}
+  .neo-grid {
+    background-image:
+      linear-gradient(to right, rgba(11, 11, 11, 0.09) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(11, 11, 11, 0.09) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
 
-.neo-dot {
-  background-image: radial-gradient(rgba(11, 11, 11, 0.16) 1.4px, transparent 1.4px);
-  background-size: 18px 18px;
-}
+  .neo-dot {
+    background-image: radial-gradient(rgba(11, 11, 11, 0.16) 1.4px, transparent 1.4px);
+    background-size: 18px 18px;
+  }
 
-.neo-stripes {
-  background-image: repeating-linear-gradient(
-    -45deg,
-    var(--ink) 0,
-    var(--ink) 2px,
-    transparent 2px,
-    transparent 8px
-  );
-}
+  .neo-stripes {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      var(--ink) 0,
+      var(--ink) 2px,
+      transparent 2px,
+      transparent 8px
+    );
+  }
 
-.neo-display {
-  font-weight: 900;
-  letter-spacing: -0.035em;
-  line-height: 0.92;
-  text-transform: uppercase;
-}
+  .neo-display {
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 0.92;
+    text-transform: uppercase;
+  }
 
-.neo-mono {
-  font-family: var(--font-mono);
-  font-variant-numeric: tabular-nums;
-}
+  .neo-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
 
-@keyframes neo-tick {
-  0% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
-  100% { transform: translateY(0); }
-}
+  @keyframes neo-tick {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-4px); }
+    100% { transform: translateY(0); }
+  }
 
-.neo-live {
-  animation: neo-tick 1.6s steps(2, end) infinite;
-}
+  .neo-live {
+    animation: neo-tick 1.6s steps(2, end) infinite;
+  }
 
-@keyframes neo-in {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
-}
+  @keyframes neo-in {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-.neo-in {
-  animation: neo-in 320ms steps(4, end) both;
-}
+  .neo-in {
+    animation: neo-in 320ms steps(4, end) both;
+  }
 
-.neo-scroll::-webkit-scrollbar {
-  height: 10px;
-  width: 10px;
-}
+  .neo-scroll::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
 
-.neo-scroll::-webkit-scrollbar-thumb {
-  background: var(--ink);
-}
+  .neo-scroll::-webkit-scrollbar-thumb {
+    background: var(--ink);
+  }
 
-.neo-scroll::-webkit-scrollbar-track {
-  background: var(--muted);
-}
+  .neo-scroll::-webkit-scrollbar-track {
+    background: var(--muted);
+  }
 
-/* recharts overrides — square, ink, no gradients */
-.recharts-cartesian-axis-line,
-.recharts-cartesian-axis-tick-line {
-  stroke: var(--ink);
-  stroke-width: 2;
-}
+  /* recharts overrides — square, ink, no gradients */
+  .recharts-cartesian-axis-line,
+  .recharts-cartesian-axis-tick-line {
+    stroke: var(--ink);
+    stroke-width: 2;
+  }
 
-.recharts-cartesian-grid line {
-  stroke: rgba(11, 11, 11, 0.18);
-}
+  .recharts-cartesian-grid line {
+    stroke: rgba(11, 11, 11, 0.18);
+  }
 
-.recharts-text {
-  font-family: var(--font-mono);
-  font-size: 11px;
-  fill: var(--muted-foreground);
-}
+  .recharts-text {
+    font-family: var(--font-mono);
+    font-size: 11px;
+    fill: var(--muted-foreground);
+  }
 
-.recharts-surface {
-  overflow: visible;
+  .recharts-surface {
+    overflow: visible;
+  }
 }

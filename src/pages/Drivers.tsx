@@ -1,10 +1,9 @@
-import { useQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
+import { useApi } from "@/hooks/useApi";
 import { CovariateLines } from "@/components/charts";
 import { Label, Loading, Panel, Stat, Table, TD, TR, Tag } from "@/components/neo";
 
 export default function Drivers() {
-  const dr = useQuery(api.apix.drivers);
+  const dr = useApi("drivers");
   if (!dr) return <Loading label="Estimating driver model" />;
 
   const significant = dr.rows.filter((r) => Math.abs(r.tStat) >= 2);

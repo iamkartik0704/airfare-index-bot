@@ -360,9 +360,11 @@ export function KeyVal({ k, v }: { k: ReactNode; v: ReactNode }) {
 
 export function Loading({ label = "Computing index" }: { label?: string }) {
   return (
-    <div className="neo neo-shadow flex items-center gap-3 bg-white p-4">
-      <span className="neo-live text-xl">■</span>
-      <span className="neo-mono text-xs font-bold uppercase tracking-[0.2em]">{label}…</span>
+    <div className="flex min-h-[75vh] w-full items-center justify-center p-4">
+      <div className="neo neo-shadow inline-flex items-center gap-3 bg-white px-6 py-4">
+        <span className="neo-live text-xl">■</span>
+        <span className="neo-mono text-xs font-bold uppercase tracking-[0.2em]">{label}…</span>
+      </div>
     </div>
   );
 }

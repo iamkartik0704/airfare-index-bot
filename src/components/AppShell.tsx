@@ -1,5 +1,4 @@
-import { useMutation, useQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
+import { useApi } from "@/hooks/useApi";
 import { NavLink, Outlet, useNavigate } from "react-router";
 import {
   Activity,
@@ -40,8 +39,8 @@ export default function AppShell() {
   const { signOut } = useAuth();
   const navigate = useNavigate();
   const [busy, setBusy] = useState(false);
-  const headline = useQuery(api.apix.headline);
-  const runSweep = useMutation(api.pipeline.runSweep);
+  const headline = useApi("headline");
+  const runSweep = (() => async () => {});
   const [open, setOpen] = useState(false);
 
   const run = async () => {

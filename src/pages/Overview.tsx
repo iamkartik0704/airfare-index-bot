@@ -1,14 +1,13 @@
-import { useQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
+import { useApi } from "@/hooks/useApi";
 import { IndexArea, MiniArea, PeriodLine } from "@/components/charts";
 import { Delta, KeyVal, Label, Loading, Panel, Stat, Table, TD, TR, Tag } from "@/components/neo";
 
 export default function Overview() {
-  const headline = useQuery(api.apix.headline);
-  const daily = useQuery(api.apix.dailySeries, { days: 400 });
-  const monthly = useQuery(api.apix.periodicSeries, { frequency: "monthly" });
-  const subs = useQuery(api.apix.subIndexSeries);
-  const pipeline = useQuery(api.apix.pipelineState);
+  const headline = useApi("headline");
+  const daily = useApi("dailySeries");
+  const monthly = useApi("periodicSeries");
+  const subs = useApi("subIndexSeries");
+  const pipeline = useApi("pipelineState");
 
   if (!headline || !daily || !monthly || !subs) return <Loading />;
 
@@ -33,6 +32,8 @@ export default function Overview() {
           <Tag tone="blue">{headline.sources} sources</Tag>
           <Tag tone="yellow">{headline.routes} city-pairs × {headline.windows} windows</Tag>
           <Tag tone="green">{headline.quotesPerSweep.toLocaleString("en-IN")} quotes/day</Tag>
+          {headline.dataOrigin === "simulated" && <Tag tone="red">Simulated data</Tag>}
+          {headline.dataOrigin === "mixed" && <Tag tone="yellow">Mixed data</Tag>}
         </div>
       </div>
 
@@ -71,6 +72,7 @@ export default function Overview() {
             <div className="flex gap-2">
               <Tag tone="blue">Solid = 7-day mean</Tag>
               <Tag tone="red">Dashed = raw day</Tag>
+              {headline.dataOrigin !== "live" && <Tag tone="red">Simulated data</Tag>}
             </div>
           }
         >
@@ -123,7 +125,11 @@ export default function Overview() {
       </div>
 
       <div className="grid gap-4 xl:grid-cols-3">
-        <Panel kicker="Monthly sub-index" title="What the NSO would print" className="xl:col-span-2">
+        <Panel kicker="Monthly sub-index" title="What the NSO would print" className="xl:col-span-2" right={
+            <div className="flex gap-2">
+              {headline.dataOrigin !== "live" && <Tag tone="red">Simulated data</Tag>}
+            </div>
+          }>
           <PeriodLine data={monthly.slice(-18)} height={250} />
         </Panel>
 

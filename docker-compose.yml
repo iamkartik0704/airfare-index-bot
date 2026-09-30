@@ -1,0 +1,39 @@
+version: "3.9"
+services:
+  api:
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM python:3.11-slim
+        WORKDIR /app
+        COPY scraper/requirements.txt ./
+        RUN pip install --no-cache-dir -r requirements.txt
+        COPY api/ ./api/
+        COPY scraper/ ./scraper/
+        COPY data/ ./data/
+        # Expose port
+        EXPOSE 8000
+        CMD ["python", "-m", "api.main"]
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./data:/app/data
+
+  dashboard:
+    build:
+      context: .
+      dockerfile_inline: |
+        FROM node:20-slim
+        WORKDIR /app
+        COPY package*.json ./
+        RUN npm install
+        COPY . .
+        EXPOSE 5173
+        CMD ["npm", "run", "dev", "--", "--host"]
+    ports:
+      - "5173:5173"
+    volumes:
+      - .:/app
+      - /app/node_modules
+    depends_on:
+      - api

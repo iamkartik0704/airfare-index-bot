@@ -17,8 +17,9 @@ from datetime import date, datetime, timezone
 
 from ..clean import clean_quotes
 from ..index import build_index, load_base, monthly_series, route_contribution
-from .base import PlaywrightFetcher, RawQuote, SourceAdapter, SweepResult
+from .base import ScraplingFetcher, RawQuote, SourceAdapter, SweepResult
 from .indigo import IndiGoAdapter, MakeMyTripAdapter
+from ..db import init_db, insert_raw_quotes, insert_std_prices, insert_index_point
 
 log = logging.getLogger("safar.sweep")
 IST = timezone.utc  # swap for zoneinfo.ZoneInfo("Asia/Kolkata") in production
@@ -44,7 +45,7 @@ def registry() -> list[SourceAdapter]:
 
 
 async def sweep_source(
-    adapter: SourceAdapter, fetcher: PlaywrightFetcher, day: date
+    adapter: SourceAdapter, fetcher: ScraplingFetcher, day: date
 ) -> SweepResult:
     started = time.perf_counter()
     collected_at = datetime.now(IST).isoformat()
@@ -67,7 +68,7 @@ async def sweep_source(
             if delay and delay > adapter.crawl_delay:
                 await asyncio.sleep(delay)
 
-            html, status, challenge = await fetcher.fetch(adapter.endpoint.split("/")[0] + ".com", url)
+            page, status, challenge = await fetcher.fetch(adapter.endpoint.split("/")[0] + ".com", url)
             requests += 1
             if challenge:
                 # Never bypass. Record the block and move on — the cell will be
@@ -79,7 +80,7 @@ async def sweep_source(
                 for backoff in (5, 20, 60):  # bounded retry, then give up
                     retries += 1
                     await asyncio.sleep(backoff)
-                    html, status, challenge = await fetcher.fetch(
+                    page, status, challenge = await fetcher.fetch(
                         adapter.endpoint.split("/")[0] + ".com", url
                     )
                     requests += 1
@@ -90,7 +91,7 @@ async def sweep_source(
 
             quotes.extend(
                 adapter.parse(
-                    html,
+                    page,
                     {
                         "route_id": route_id,
                         "origin": origin,
@@ -121,7 +122,8 @@ async def sweep_source(
 
 async def run_sweep(day: date | None = None) -> dict:
     day = day or datetime.now(IST).date()
-    fetcher = PlaywrightFetcher()
+    init_db()
+    fetcher = ScraplingFetcher()
     await fetcher.start()
     try:
         results = await asyncio.gather(*(sweep_source(a, fetcher, day) for a in registry()))
@@ -129,9 +131,14 @@ async def run_sweep(day: date | None = None) -> dict:
         await fetcher.stop()
 
     all_quotes: list[RawQuote] = [q for r in results for q in r.quotes]
+    insert_raw_quotes(all_quotes)
+    
     cleaned, report = clean_quotes(all_quotes)
+    insert_std_prices(cleaned, day.isoformat(), datetime.now(IST).isoformat())
+    
     reference = load_base(cleaned)  # fixed reference period, stored once
     index_point = build_index(cleaned, day, reference)
+    insert_index_point(index_point)
 
     audit = [
         {

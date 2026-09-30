@@ -185,53 +185,54 @@ class SourceAdapter:
         raise NotImplementedError
 
 
-class PlaywrightFetcher:
-    """Headless Chromium with a camoufox fingerprint; concurrency 1 per host."""
+class ScraplingFetcher:
+    """Standard Playwright dynamic fetcher (no stealth, CAPTCHA bypass disabled)."""
 
     def __init__(self, headless: bool = True) -> None:
         self.headless = headless
-        self._pw = None
-        self._browser = None
-        self._contexts: dict[str, Any] = {}
+        self.playwright = None
+        self.browser = None
+        self.context = None
 
     async def start(self) -> None:
         from playwright.async_api import async_playwright
-
-        self._pw = await async_playwright().start()
-        self._browser = await self._pw.chromium.launch(
+        self.playwright = await async_playwright().start()
+        self.browser = await self.playwright.chromium.launch(
             headless=self.headless,
-            args=["--disable-blink-features=AutomationControlled"],
+            args=["--disable-gpu", "--no-sandbox", "--disable-dev-shm-usage"]
+        )
+        self.context = await self.browser.new_context(
+            user_agent=USER_AGENT,
+            viewport={"width": 1280, "height": 720}
         )
 
     async def stop(self) -> None:
-        for ctx in self._contexts.values():
-            await ctx.close()
-        if self._browser:
-            await self._browser.close()
-        if self._pw:
-            await self._pw.stop()
+        if self.context:
+            await self.context.close()
+        if self.browser:
+            await self.browser.close()
+        if self.playwright:
+            await self.playwright.stop()
 
-    async def fetch(self, host: str, url: str) -> tuple[str, int, bool]:
-        """Return (html, status, challenge_detected)."""
-        if host not in self._contexts:
-            self._contexts[host] = await self._browser.new_context(
-                user_agent=USER_AGENT,
-                locale="en-IN",
-                timezone_id="Asia/Kolkata",
-                viewport={"width": 1440, "height": 900},
-            )
-        ctx = self._contexts[host]
-        page = await ctx.new_page()
+    async def fetch(self, host: str, url: str) -> tuple[Any, int, bool]:
+        """Return (parsel_selector, status, challenge_detected)."""
+        page = await self.context.new_page()
         try:
-            await page.goto(url, wait_until="domcontentloaded", timeout=45_000)
-            # JS-rendered results: wait for the result container, then settle.
-            await page.wait_for_timeout(2500)
-            html = await page.content()
-            lowered = html.lower()
-            challenge = any(marker in lowered for marker in CHALLENGE_MARKERS)
-            return html, page.url and 200 or 200, challenge
-        finally:
-            await page.close()
+            res = await page.goto(url, wait_until="networkidle", timeout=45000)
+            status = res.status if res else 500
+        except Exception as e:
+            log.warning(f"Timeout/error fetching {url}: {e}")
+            status = 500
+            
+        html = await page.content()
+        lowered = html.lower()
+        challenge = any(marker in lowered for marker in CHALLENGE_MARKERS)
+        
+        await page.close()
+        
+        import parsel
+        selector = parsel.Selector(text=html)
+        return selector, status, challenge
 
 
 RUPEE = re.compile(r"[^0-9.]")

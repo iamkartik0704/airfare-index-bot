@@ -1,9 +1,8 @@
-import { useQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
+import { useApi } from "@/hooks/useApi";
 import { Arrow, FlowNode, Label, Loading, Panel, Table, TD, TR, Tag } from "@/components/neo";
 
 export default function Methodology() {
-  const m = useQuery(api.apix.methodology);
+  const m = useApi("methodology");
   if (!m) return <Loading label="Loading PSI documentation" />;
 
   return (
@@ -22,8 +21,8 @@ export default function Methodology() {
         </div>
       </div>
 
-      <Panel kicker="The estimator" title="How APIx is built" tone="ink">
-        <div className="neo-2 bg-white p-4 text-center">
+      <Panel kicker="The estimator" title="How APIx is built" tone="paper">
+        <div className="neo-2 bg-white p-4 text-center text-[#0b0b0b]">
           <p className="neo-mono text-lg font-bold tracking-tight md:text-2xl">{m.formula}</p>
         </div>
         <div className="mt-4 grid gap-3 md:grid-cols-4">
@@ -33,13 +32,13 @@ export default function Methodology() {
             { k: "Q(d) — quality", v: "Hedonic index of the observed fare mix: legroom, meals, changeability, carbon intensity" },
             { k: "0 — base", v: "7-day mean around the reference date, the CPI's reference-period averaging" },
           ].map((x) => (
-            <div key={x.k} className="neo-2 neo-shadow-sm bg-white p-3">
+            <div key={x.k} className="neo-2 neo-shadow-sm bg-white p-3 text-[#0b0b0b]">
               <p className="neo-mono text-[10px] font-bold uppercase tracking-[0.14em]">{x.k}</p>
-              <p className="mt-1 text-xs leading-5 text-muted-foreground">{x.v}</p>
+              <p className="mt-1 text-xs leading-5 opacity-80">{x.v}</p>
             </div>
           ))}
         </div>
-        <ul className="mt-4 space-y-2 text-sm leading-6">
+        <ul className="mt-4 space-y-2 text-sm leading-6 text-[#0b0b0b]">
           <li>• <strong>Fixed basket.</strong> Weights change only on the annual DGCA release, exactly like CPI spending weights.</li>
           <li>• <strong>Double quality adjustment.</strong> Median rather than mean for the route price, so one sold-out fare cannot move the index; hedonic divisor for mix shift.</li>
           <li>• <strong>Three frequencies.</strong> Daily is the headline; weekly and monthly are means of the daily series, released on the NSO calendar.</li>

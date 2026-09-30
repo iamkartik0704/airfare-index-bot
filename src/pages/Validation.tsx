@@ -1,10 +1,9 @@
-import { useQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
+import { useApi } from "@/hooks/useApi";
 import { BacktestScatter, PeriodLine } from "@/components/charts";
 import { Delta, KeyVal, Label, Loading, Panel, Stat, Table, TD, TR, Tag } from "@/components/neo";
 
 export default function Validation() {
-  const v = useQuery(api.apix.validation);
+  const v = useApi("validation");
   if (!v) return <Loading label="Back-testing 12 months" />;
 
   return (

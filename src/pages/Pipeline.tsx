@@ -1,5 +1,4 @@
-import { useQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
+import { useApi } from "@/hooks/useApi";
 import { Arrow, Bar, FlowNode, KeyVal, Label, Loading, Panel, Stat, Table, TD, TR, Tag } from "@/components/neo";
 
 const STATUS_TONE: Record<string, "green" | "yellow" | "red"> = {
@@ -9,7 +8,7 @@ const STATUS_TONE: Record<string, "green" | "yellow" | "red"> = {
 };
 
 export default function Pipeline() {
-  const state = useQuery(api.apix.pipelineState);
+  const state = useApi("pipelineState");
   if (!state) return <Loading label="Reading collector registry" />;
 
   const t = state.totals;

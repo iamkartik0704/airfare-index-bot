@@ -1,6 +1,5 @@
-import { useQuery } from "convex/react";
 import { useEffect, useState } from "react";
-import { api } from "@/convex/_generated/api";
+import { useApi } from "@/hooks/useApi";
 import { BacktestScatter, ElasticityLine, IndexArea, PeriodLine } from "@/components/charts";
 import { Arrow, Bar, FlowNode, KeyVal, Loading, Stat, Tag, Table, TD, TR } from "@/components/neo";
 
@@ -37,14 +36,14 @@ function Slide({
 
 export default function Deck() {
   const [i, setI] = useState(0);
-  const headline = useQuery(api.apix.headline);
-  const daily = useQuery(api.apix.dailySeries, { days: 400 });
-  const monthly = useQuery(api.apix.periodicSeries, { frequency: "monthly" });
-  const backtest = useQuery(api.apix.validation);
-  const el = useQuery(api.apix.elasticity);
-  const contrib = useQuery(api.apix.routeContributions);
-  const pipeline = useQuery(api.apix.pipelineState);
-  const heat = useQuery(api.apix.heatmap);
+  const headline = useApi("headline");
+  const daily = useApi("dailySeries");
+  const monthly = useApi("periodicSeries");
+  const backtest = useApi("validation");
+  const el = useApi("elasticity");
+  const contrib = useApi("routeContributions");
+  const pipeline = useApi("pipelineState");
+  const heat = useApi("heatmap");
 
   useEffect(() => {
     const onKey = (e: KeyboardEvent) => {
@@ -78,6 +77,7 @@ export default function Deck() {
             <Tag tone="ink">Team SAFAR</Tag>
             <Tag tone="blue">SIH 2026</Tag>
             <Tag tone="yellow">{headline.quotesPerSweep.toLocaleString("en-IN")} quotes/day</Tag>
+            <Tag tone="red">Simulated data</Tag>
           </div>
         </div>
         <div className="grid gap-2">
@@ -217,6 +217,7 @@ export default function Deck() {
     </Slide>,
 
     <Slide n={7} total={12} kicker="Live index" title="400 days of daily APIx">
+      <div className="absolute right-8 top-8"><Tag tone="red">Simulated data</Tag></div>
       <IndexArea data={daily} height={300} />
       <div className="mt-2 flex flex-wrap gap-2">
         <Tag tone="blue">Today {headline.index.toFixed(2)}</Tag>
@@ -226,6 +227,7 @@ export default function Deck() {
     </Slide>,
 
     <Slide n={8} total={12} kicker="Monthly release" title="The series an NSO would print">
+      <div className="absolute right-8 top-8"><Tag tone="red">Simulated data</Tag></div>
       <PeriodLine data={monthly.slice(-18)} height={290} />
       <div className="mt-3 grid gap-2 sm:grid-cols-3">
         {monthly.slice(-3).map((m) => (
@@ -264,7 +266,7 @@ export default function Deck() {
         <BacktestScatter data={backtest.months} height={230} />
         <div>
           <p className="text-sm leading-6">
-            Twelve months of the SAFAR index against the DGCA monthly average domestic economy fare.
+            <strong>Note: This back-test is a demonstration of the method using synthetic data, not a live result.</strong> Twelve months of the SAFAR index against the DGCA monthly average domestic economy fare.
             Both series are rebased, correlated and differenced; the residual level gap is a
             published scope factor, because SAFAR's basket is narrower and its booking windows are
             fixed while DGCA's are not.

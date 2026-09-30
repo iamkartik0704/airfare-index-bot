@@ -1,5 +1,4 @@
-import { useQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
+import { useApi } from "@/hooks/useApi";
 import { ContributionBars } from "@/components/charts";
 import { Bar, Delta, Label, Loading, Panel, Table, TD, TR, Tag } from "@/components/neo";
 import { cn } from "@/lib/utils";
@@ -12,10 +11,10 @@ function tone(change: number): string {
 }
 
 export default function Sectors() {
-  const heat = useQuery(api.apix.heatmap);
-  const contrib = useQuery(api.apix.routeContributions);
-  const headline = useQuery(api.apix.headline);
-  const channel = useQuery(api.apix.channelAnalysis);
+  const heat = useApi("heatmap");
+  const contrib = useApi("routeContributions");
+  const headline = useApi("headline");
+  const channel = useApi("channelAnalysis");
 
   if (!heat || !contrib || !headline || !channel) return <Loading label="Building sector grid" />;
 

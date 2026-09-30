@@ -61,7 +61,7 @@ export function IndexArea({
       <AreaChart data={data} margin={{ top: 8, right: 8, bottom: 0, left: -18 }}>
         <CartesianGrid strokeDasharray="0" vertical={false} />
         <XAxis dataKey="date" {...axisProps} minTickGap={48} />
-        <YAxis {...axisProps} width={52} domain={["dataMin - 2", "dataMax + 2"]} />
+        <YAxis {...axisProps} width={52} domain={["dataMin - 2", "dataMax + 2"]} tickFormatter={(v) => v.toFixed(0)} />
         <ReferenceLine y={100} stroke={INK} strokeWidth={2} strokeDasharray="6 4" />
         <Tooltip content={<Tip fmt={(v) => v.toFixed(2)} />} />
         <Area
@@ -104,7 +104,7 @@ export function PeriodLine({
       <LineChart data={data} margin={{ top: 8, right: 8, bottom: 0, left: -18 }}>
         <CartesianGrid strokeDasharray="0" vertical={false} />
         <XAxis dataKey="label" {...axisProps} minTickGap={24} />
-        <YAxis {...axisProps} width={52} domain={["dataMin - 2", "dataMax + 2"]} />
+        <YAxis {...axisProps} width={52} domain={["dataMin - 2", "dataMax + 2"]} tickFormatter={(v) => v.toFixed(0)} />
         <ReferenceLine y={100} stroke={INK} strokeWidth={2} strokeDasharray="6 4" />
         <Tooltip content={<Tip fmt={(v) => v.toFixed(2)} />} />
         {lines.map((l, i) => (
@@ -244,7 +244,7 @@ export function CovariateLines({
       <LineChart margin={{ top: 8, right: 8, bottom: 0, left: -18 }}>
         <CartesianGrid strokeDasharray="0" vertical={false} />
         <XAxis dataKey="date" {...axisProps} minTickGap={40} />
-        <YAxis {...axisProps} width={46} />
+        <YAxis {...axisProps} width={46} tickFormatter={(v) => v.toFixed(0)} />
         <Tooltip content={<Tip fmt={(v) => Number(v).toFixed(3)} />} />
         {series.map((s) => (
           <Line

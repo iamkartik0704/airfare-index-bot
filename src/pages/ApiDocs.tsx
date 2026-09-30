@@ -1,5 +1,4 @@
-import { useQuery } from "convex/react";
-import { api } from "@/convex/_generated/api";
+import { useApi } from "@/hooks/useApi";
 import { KeyVal, Label, Loading, Panel, Table, TD, TR, Tag } from "@/components/neo";
 
 const ENDPOINTS = [
@@ -36,7 +35,7 @@ const ENDPOINTS = [
 ];
 
 export default function ApiDocs() {
-  const releases = useQuery(api.apix.releases);
+  const releases = useApi("releases");
   const base = (import.meta.env.VITE_CONVEX_URL as string | undefined)?.replace(/\/$/, "") ?? "https://<deployment>.convex.cloud";
 
   return (

@@ -1,13 +1,12 @@
-import { useQuery } from "convex/react";
+import { useApi } from "@/hooks/useApi";
 import { useState } from "react";
-import { api } from "@/convex/_generated/api";
 import { Bar, Delta, KeyVal, Label, Loading, Panel, Stat, Table, TD, TR, Tag } from "@/components/neo";
 
 export default function Explorer() {
   const [routeId, setRouteId] = useState("DEL-BOM");
   const [offset, setOffset] = useState(0);
-  const method = useQuery(api.apix.methodology);
-  const ex = useQuery(api.apix.explorer, { routeId, offsetDays: offset });
+  const method = useApi("methodology");
+  const ex = useApi("explorer", { routeId, offsetDays: offset });
 
   if (!method || !ex) return <Loading label="Replaying a collection" />;
 
