@@ -26,7 +26,7 @@ from the channel Indians actually buy in, weighted the way Indians actually trav
 
 A fixed-basket, hedonic **Airfare Price Index (APIx)**, collected automatically from
 5 airline portals and 6 OTAs across 24 DGCA-weighted city-pairs and 5 advance-purchase
-windows, published daily through a REST API the NSO and RBI can consume.
+windows, published daily through a robust FastAPI endpoint that the NSO and RBI can consume.
 
 ---
 
@@ -45,7 +45,7 @@ windows, published daily through a REST API the NSO and RBI can consume.
 └───────────────┬─────────────────────────────────────────────────────────────┘
 ┌───────────────▼─────────────────────────────────────────────────────────────┐
 │ COLLECTION   Scrapy / Playwright workers · session rotation · IP pool       │
-│              immutable raw store (JSONL, partitioned source × date)          │
+│              Python Scraper sweeps at 05:00 IST                              │
 └───────────────┬─────────────────────────────────────────────────────────────┘
 ┌───────────────▼─────────────────────────────────────────────────────────────┐
 │ CLEANING     currency parse · de-duplication · sold-out/cancelled drop ·    │
@@ -53,16 +53,16 @@ windows, published daily through a REST API the NSO and RBI can consume.
 │              flagged imputation of blocked cells                             │
 └───────────────┬─────────────────────────────────────────────────────────────┘
 ┌───────────────▼─────────────────────────────────────────────────────────────┐
-│ PSI CELLS    24 city-pairs × 5 windows × 5 fare classes × 5 carriers        │
-│              ≈ 13,900 raw quotes per sweep · ≈ 2.4 M per quarter             │
+│ DATABASE     DuckDB embedded OLAP database (`data/apix.duckdb`)             │
+│              Millions of rows aggregated instantaneously                     │
 └───────────────┬─────────────────────────────────────────────────────────────┘
 ┌───────────────▼─────────────────────────────────────────────────────────────┐
-│ INDEX ENGINE fixed-basket Laspeyres · DGCA weights · hedonic quality        │
-│              divisor · sub-groups (window / region / channel) · contributions│
+│ INDEX ENGINE FastAPI backend running fixed-basket Laspeyres estimators,      │
+│              DGCA weights, hedonic quality divisors, and covariates          │
 └───────────────┬─────────────────────────────────────────────────────────────┘
 ┌───────────────▼─────────────────────────────────────────────────────────────┐
-│ DELIVERY     daily / weekly / monthly releases · REST API · realtime console│
-│              release ledger · DGCA reconciliation report                     │
+│ DELIVERY     React/Vite Dashboard (Neobrutalist UI) & JSON REST APIs         │
+│              Sub-group tracking, elasticity curves, and back-tests           │
 └─────────────────────────────────────────────────────────────────────────────┘
 ```
 
@@ -72,26 +72,19 @@ windows, published daily through a REST API the NSO and RBI can consume.
 |---|---|
 | `scraper/safar/collect/base.py` | Adapter contract, robots gate, token bucket, Playwright fetcher |
 | `scraper/safar/collect/indigo.py` | Reference airline + OTA adapters (selectors, URL building, parsing) |
-| `scraper/safar/collect/registry.py` | Source registry and the 05:00 IST sweep |
-| `scraper/safar/clean.py` | Cleaning funnel (the twin of `cleanQuotes()`) |
-| `scraper/safar/index.py` | Laspeyres + hedonic estimator, contributions, back-test |
-| `scraper/safar/crawler.py` | Scrapy settings: AutoThrottle, robots, retry, pipelines |
-| `scraper/tests/` | Automated tests for parsing, cleaning, index and back-test |
-| `src/convex/lib/engine.ts` | Deterministic collection twin + fare model (drives the demo) |
-| `src/convex/lib/index.ts` | Index construction, sub-groups, elasticity, regression, back-test |
-| `src/convex/lib/adapters.ts` | Source registry with policy, selectors and sweep simulation |
-| `src/convex/apix.ts` | Read API used by the console |
-| `src/convex/pipeline.ts` | `runSweep` mutation, release ledger, API-key registration |
-| `src/convex/http.ts` | Public `/api/v1/*` endpoints |
+| `scraper/safar/collect/registry.py` | Source registry and the automated sweep |
+| `scraper/seed_db.py` | Seeds the initial DuckDB database with generated simulation data |
+| `api/main.py` | FastAPI backend exposing REST endpoints for the dashboard |
+| `data/apix.duckdb` | Embedded DuckDB database for lightning-fast analytical queries |
+| `src/components/neo.tsx` | Core Neobrutalist UI design system components |
+| `src/hooks/useApi.ts` | Frontend data-fetching layer with client-side caching |
+| `src/pages/*.tsx` | Dashboard views (Overview, Validation, Drivers, etc.) |
 
-### 3.2 Why the demo is deterministic
+### 3.2 Why the demo uses mixed data
 
-The console runs the **deterministic twin** of the collector: a pure function of
-`(date, route, carrier, channel, epoch)`. It is what lets the prototype show 400 days of
-history, a reproducible index and a back-test without hammering anyone's servers during a
-demo — and the *same* interface (`SourceAdapter`) is implemented by the Playwright adapters.
-Pressing **Run pipeline** bumps the epoch, which genuinely re-observes the market; every
-number on screen recomputes reactively through Convex.
+The console runs a **deterministic twin** of the market to ensure the application has data to show even when the real-world APIs rate-limit us. The embedded DuckDB is seeded with a 400-day mock history (`seed_db.py`) to demonstrate a reproducible index, seasonality, and back-testing without hammering external servers during a demo. 
+
+Running the Python scraper (`python -m safar.collect.registry`) seamlessly injects live market data into the DuckDB instance alongside the simulated history. The dashboard explicitly badges any charts using simulation data as "Simulated Data" to maintain statistical integrity.
 
 ---
 
@@ -132,9 +125,7 @@ versioned and re-run over the full history, with the result published in a corre
   the cell is imputed from that carrier's own fare index and flagged, and imputation coverage
   is published with every release.
 * Descriptive User-Agent with a contact URL. No login, no personal data, no seat or baggage
-  bypass, no purchase flow ever touched. Cookies disabled in the Scrapy profile.
-* Immutable raw store: every quote ever seen is retained, so any published number can be
-  reproduced or contested.
+  bypass, no purchase flow ever touched.
 
 ---
 
@@ -149,9 +140,6 @@ the NSO currently leans on — over 12 months:
 * Cross-correlation by lag (−3…+3 months) to show no lead/lag structure is being assumed
 * Residual level gap reported as an explicit **scope factor** — SAFAR's basket is narrower and
   its booking windows are fixed, DGCA's are not
-
-The current build returns r ≈ 0.97, MAPE ≈ 4%, ~91% directional accuracy, which is the
-"PASS — reproduces the DGCA reference series within tolerance" row you see in the console.
 
 ---
 
@@ -176,8 +164,8 @@ The current build returns r ≈ 0.97, MAPE ≈ 4%, ~91% directional accuracy, wh
 
 | Phase | Deliverable |
 |---|---|
-| **Now (prototype)** | Deterministic engine + live adapter contracts, full console, 12-month back-test, public API, 12-slide deck |
-| **Phase 2** | Production Scrapy/Playwright cluster, TimescaleDB warehouse, dbt PSI models, real DGCA reconciliation feed |
+| **Now (prototype)** | FastAPI + DuckDB backend, Playwright scraper, full dashboard console, 12-month back-test |
+| **Phase 2** | Production Scrapy cluster, TimescaleDB warehouse, real DGCA reconciliation feed |
 | **Phase 3** | NSO pilot: publish APIx as a T&C sub-group alongside the manual series for two quarters |
 | **Phase 4** | RBI briefing layer: fuel / rupee pass-through attribution on demand |
 
@@ -186,14 +174,15 @@ The current build returns r ≈ 0.97, MAPE ≈ 4%, ~91% directional accuracy, wh
 ## 9. Running it
 
 ```bash
-# Web console (Convex + Vite)
-bun install
-bunx convex dev --once     # push functions + regenerate types
-bun run dev
+# Terminal 1: Run the FastAPI backend (Port 8001)
+cd api
+python main.py
 
-# Python collector reference implementation
+# Terminal 2: Run the Vite React dashboard (Port 5174)
+npm install
+npm run dev -- --port 5174
+
+# Terminal 3: Run a live data collection sweep
 cd scraper
-pip install -r requirements.txt
-pytest -q                  # automated tests
-python -m safar.collect.registry    # one sweep
+python -m safar.collect.registry
 ```
