@@ -216,10 +216,23 @@ export function useApi(queryKey: string, params: any = {}) {
           setData(json);
         }
         else if (queryKey === "explorer") {
+          const rId = params.routeId || "DEL-BOM";
+          const org = rId.split("-")[0] || "DEL";
+          const dest = rId.split("-")[1] || "BOM";
+          
+          let dateStr = "2026-09-30";
+          if (params.offsetDays === 1) dateStr = "2026-09-29";
+          if (params.offsetDays === 7) dateStr = "2026-09-23";
+          if (params.offsetDays === 30) dateStr = "2026-08-31";
+          
+          // Generate deterministic pseudo-random fare based on route string
+          const fareSeed = rId.charCodeAt(0) * rId.charCodeAt(4) * 10;
+          const basePrice = fareSeed > 2000 ? fareSeed : 4500;
+          
           const result = {
-            date: "2026-09-30",
-            route: { origin: "DEL", destination: "BOM", distanceKm: 1148, weight: 5.0 },
-            routeFare: 4500,
+            date: dateStr,
+            route: { origin: org, destination: dest, distanceKm: 1148, weight: 5.0 },
+            routeFare: basePrice,
             report: {
               rawCount: 200,
               droppedSoldOut: 10,
@@ -230,23 +243,23 @@ export function useApi(queryKey: string, params: any = {}) {
               imputedCount: 15,
               keptCount: 168,
               coverage: 95.0,
-              medianTotal: 4400,
+              medianTotal: basePrice - 100,
               madTotal: 250,
               byChannel: { airline: 100, ota: 68 }
             },
             byLead: [
-              { leadTime: 1, fare: 6500, premiumPct: 20 },
-              { leadTime: 7, fare: 4500, premiumPct: 0 }
+              { leadTime: 1, fare: basePrice + 2000, premiumPct: 20 },
+              { leadTime: 7, fare: basePrice, premiumPct: 0 }
             ],
             carriers: [
-              { carrier: "6E", price: 4400 },
-              { carrier: "UK", price: 5000 }
+              { carrier: "6E", price: basePrice - 100 },
+              { carrier: "UK", price: basePrice + 500 }
             ],
             rawSample: [
-              { id: "1", sourceId: "indigo", carrier: "6E", fareClass: "Economy", fareText: "4000", taxText: "400", seatsLeft: 5, soldOut: false, isCancelled: false }
+              { id: "1", sourceId: "indigo", carrier: "6E", fareClass: "Economy", fareText: (basePrice - 500).toString(), taxText: "400", seatsLeft: 5, soldOut: false, isCancelled: false }
             ],
             cleanedSample: [
-              { id: "1", sourceId: "indigo", carrier: "6E", fareClass: "Economy", baseFare: 4000, taxes: 400, convenienceFee: 0, totalFare: 4400, quality: 1.0, flags: [], imputed: false }
+              { id: "1", sourceId: "indigo", carrier: "6E", fareClass: "Economy", baseFare: basePrice - 500, taxes: 400, convenienceFee: 0, totalFare: basePrice - 100, quality: 1.0, flags: [], imputed: false }
             ]
           };
           cache[cacheKey] = result;

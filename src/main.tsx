@@ -8,21 +8,32 @@ import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router";
 import "./index.css";
 
-// Lazy load route components for better code splitting
-const Landing = lazy(() => import("./pages/Landing.tsx"));
-const AuthPage = lazy(() => import("./pages/Auth.tsx"));
-const AppShell = lazy(() => import("./components/AppShell.tsx"));
-const Overview = lazy(() => import("./pages/Overview.tsx"));
-const Sectors = lazy(() => import("./pages/Sectors.tsx"));
-const LeadTime = lazy(() => import("./pages/LeadTime.tsx"));
-const Drivers = lazy(() => import("./pages/Drivers.tsx"));
-const Pipeline = lazy(() => import("./pages/Pipeline.tsx"));
-const Explorer = lazy(() => import("./pages/Explorer.tsx"));
-const Validation = lazy(() => import("./pages/Validation.tsx"));
-const Methodology = lazy(() => import("./pages/Methodology.tsx"));
-const ApiDocs = lazy(() => import("./pages/ApiDocs.tsx"));
-const Deck = lazy(() => import("./pages/Deck.tsx"));
-const NotFound = lazy(() => import("./pages/NotFound.tsx"));
+// Lazy load route components with a retry wrapper for Vite chunk loading failures
+const lazyRetry = (componentImport: () => Promise<any>) =>
+  lazy(async () => {
+    try {
+      return await componentImport();
+    } catch (error) {
+      console.error("Chunk failed to load, forcing reload", error);
+      window.location.reload();
+      return Promise.reject(error);
+    }
+  });
+
+const Landing = lazyRetry(() => import("./pages/Landing.tsx"));
+const AuthPage = lazyRetry(() => import("./pages/Auth.tsx"));
+const AppShell = lazyRetry(() => import("./components/AppShell.tsx"));
+const Overview = lazyRetry(() => import("./pages/Overview.tsx"));
+const Sectors = lazyRetry(() => import("./pages/Sectors.tsx"));
+const LeadTime = lazyRetry(() => import("./pages/LeadTime.tsx"));
+const Drivers = lazyRetry(() => import("./pages/Drivers.tsx"));
+const Pipeline = lazyRetry(() => import("./pages/Pipeline.tsx"));
+const Explorer = lazyRetry(() => import("./pages/Explorer.tsx"));
+const Validation = lazyRetry(() => import("./pages/Validation.tsx"));
+const Methodology = lazyRetry(() => import("./pages/Methodology.tsx"));
+const ApiDocs = lazyRetry(() => import("./pages/ApiDocs.tsx"));
+const Deck = lazyRetry(() => import("./pages/Deck.tsx"));
+const NotFound = lazyRetry(() => import("./pages/NotFound.tsx"));
 
 // Simple loading fallback for route transitions
 function RouteLoading() {

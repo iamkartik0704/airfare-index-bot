@@ -249,6 +249,7 @@ export function CovariateLines({
         {series.map((s) => (
           <Line
             key={s.key}
+            data={s.data}
             type="monotone"
             dataKey="value"
             name={s.label}
