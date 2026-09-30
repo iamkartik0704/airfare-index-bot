@@ -29,6 +29,15 @@ def seed():
                         quality, flags, imputed, source, is_synthetic
                     ) VALUES (?, '6E', ?, CURRENT_TIMESTAMP, ?, 'VALUE', ?, 500, 0, 0, ?, 1.0, [], false, 'indigo', true)
                 """, (r, today.isoformat(), l, total - 500, total))
+                
+                # Insert OTA data for wedge analysis
+                con.execute("""
+                    INSERT INTO std_prices (
+                        route, airline, travel_date, booking_datetime, lead_days,
+                        fare_class, base_fare, taxes, udf, convenience_fee, total_fare,
+                        quality, flags, imputed, source, is_synthetic
+                    ) VALUES (?, '6E', ?, CURRENT_TIMESTAMP, ?, 'VALUE', ?, 500, 0, 350, ?, 1.0, [], false, 'makemytrip', true)
+                """, (r, today.isoformat(), l, total - 500, total + 350))
         
         # 2. Seed index_points for 400 days
         for i in range(400):
