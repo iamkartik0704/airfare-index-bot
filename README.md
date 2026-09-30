@@ -62,7 +62,8 @@ npm run dev -- --port 5174
 > The current index uses **synthetic/simulated data** for demonstration purposes. A 400-day mock series and mock prices are injected to demonstrate the methodology and the API's capabilities. 
 > 
 > * Any charts or data showing synthetic rows will have a "Simulated data" badge.
-> * The back-test validation slide is purely a demonstration of the method on synthetic data, not a live result against actual DGCA data.
+> * The **Validation** dashboard uses a real, static export of the official MoSPI CPI dataset (`data/esankhyiki-airfare-cpi.json`). The FastAPI backend calculates real Pearson and Spearman correlations against the DuckDB index points using Pandas/Numpy. We use a static JSON reference rather than a live fetcher due to government API auth barriers.
+> * The **Drivers** dashboard performs real Multiple Linear Regression (OLS) on the backend using `numpy.linalg.lstsq`.
 > * To get live data, you must run the scraper sweep manually (`cd scraper && python -m safar.collect.registry`), which will mark the newly fetched rows as live data.
 
 ## Design principles

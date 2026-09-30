@@ -76,6 +76,7 @@ windows, published daily through a robust FastAPI endpoint that the NSO and RBI 
 | `scraper/seed_db.py` | Seeds the initial DuckDB database with generated simulation data |
 | `api/main.py` | FastAPI backend exposing REST endpoints for the dashboard |
 | `data/apix.duckdb` | Embedded DuckDB database for lightning-fast analytical queries |
+| `data/esankhyiki-airfare-cpi.json` | Official MoSPI CPI reference dataset for validation correlation math |
 | `src/components/neo.tsx` | Core Neobrutalist UI design system components |
 | `src/hooks/useApi.ts` | Frontend data-fetching layer with client-side caching |
 | `src/pages/*.tsx` | Dashboard views (Overview, Validation, Drivers, etc.) |
@@ -131,8 +132,9 @@ versioned and re-run over the full history, with the result published in a corre
 
 ## 6. Validation
 
-SAFAR is back-tested against the **DGCA monthly average domestic economy fare** — the series
-the NSO currently leans on — over 12 months:
+SAFAR is back-tested against the **official MoSPI Combined Airfare CPI** (Item code 07.3.3.1.2.01). Due to API authentication barriers on eSankhyiki, the reference dataset is stored as a static JSON file (`data/esankhyiki-airfare-cpi.json`). 
+
+The FastAPI backend automatically aligns the latest 12 months of DuckDB data with the MoSPI dataset, performing live correlations using Pandas and Numpy:
 
 * Pearson r and Spearman ρ on rebased levels
 * MAPE on ₹ levels, reported separately from correlation
