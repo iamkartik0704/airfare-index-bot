@@ -1,0 +1,30 @@
+01	1.000	0.0	APIx / SAFAR
+02	1.000	573.3	01 / Decisions and reading guide
+03	1.000	636.8	02 / Requirements mapped to evidence
+04	1.000	591.6	03 / What the existing repository actually does
+05	1.000	687.0	04 / Changes to the v2 plan
+06	1.000	559.6	05 / Resolve external data before polishing charts
+07	1.000	604.9	06 / Sampling frame and comparable product
+08	1.000	610.1	07 / Recommended system architecture
+09	1.000	535.0	08 / SAFAR Collect: own the framework
+10	1.000	547.4	09 / Durable jobs and engine contracts
+11	1.000	429.1	10 / Fetching, sessions and source access
+12	1.000	495.3	11 / Adaptive extraction without silent errors
+13	1.000	614.3	12 / Normalize price meaning, not just text
+14	0.957	757.6	13 / Data model and provenance
+15	1.000	572.0	14 / Cleaning and quality decisions
+16	1.000	458.3	15 / A precisely defined experimental estimator
+17	1.000	469.0	16 / Weights, missing prices and coverage
+18	1.000	460.5	17 / Periods, revisions and statistical interpretation
+19	1.000	610.2	18 / Read API and access design
+20	1.000	683.5	19 / Dashboard that shows the quality of the number
+21	1.000	495.6	20 / The 30-day validation plan
+22	1.000	711.6	21 / Test strategy and acceptance gates
+23	1.000	462.1	22 / Deployment, capacity and cost model
+24	1.000	479.1	23 / Migration from the current project
+25	1.000	520.6	24 / Implementation tasks: foundation and collection
+26	1.000	535.6	25 / Implementation tasks: extraction and statistics
+27	1.000	562.2	26 / Implementation tasks: serving and proof
+28	1.000	634.2	27 / Team schedule, risks and judging demonstration
+29	1.000	357.5	28 / References: local inputs and Scrapling
+30	1.000	424.1	29 / References: statistics and engineering
