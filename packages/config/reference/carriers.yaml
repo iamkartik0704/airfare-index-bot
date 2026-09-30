@@ -1,0 +1,9 @@
+# Scheduled domestic carriers in scope (ps.md: IndiGo, Air India, Air India
+# Express, Akasa Air, SpiceJet). `aliases` are the spellings adapters and OTAs
+# emit; normalization maps every alias to the IATA code.
+carriers:
+  - {code: 6E, name: IndiGo, group: LCC, aliases: [INDIGO, "INDIGO AIRLINES", "INTERGLOBE AVIATION"]}
+  - {code: AI, name: Air India, group: FSC, aliases: ["AIR INDIA", AIRINDIA, "AIR INDIA LIMITED"]}
+  - {code: IX, name: Air India Express, group: LCC, aliases: ["AIR INDIA EXPRESS", "AIX", "AI EXPRESS", "AIR INDIA EXPRESS LIMITED"]}
+  - {code: QP, name: Akasa Air, group: LCC, aliases: [AKASA, "AKASA AIR", AKASAAIR]}
+  - {code: SG, name: SpiceJet, group: LCC, aliases: [SPICEJET, "SPICE JET"]}

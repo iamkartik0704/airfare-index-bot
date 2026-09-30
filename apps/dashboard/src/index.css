@@ -1,0 +1,225 @@
+@import "tailwindcss";
+
+/* SAFAR theme — neo-brutalist minimalism (ported from the legacy app).
+   Square corners, ink borders, flat colour blocks, hard offset shadows.
+   Contrast is carried by weight and colour, never by decoration. */
+
+@theme {
+  --font-sans: "Archivo", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-paper: #f2efe6;
+  --color-ink: #0b0b0b;
+  --color-blue: #2b4cff;
+  --color-yellow: #ffd400;
+  --color-red: #ff4a1c;
+  --color-green: #00a878;
+  --color-violet: #b14eff;
+  --color-muted: #e6e1d4;
+  --color-muted-foreground: #5c5747;
+  --color-card: #ffffff;
+}
+
+:root {
+  --ink: #0b0b0b;
+  --paper: #f2efe6;
+  --card: #ffffff;
+  --muted: #e6e1d4;
+  --muted-foreground: #5c5747;
+  color-scheme: light;
+}
+
+@layer base {
+  * {
+    border-radius: 0 !important;
+  }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01";
+    overflow-x: hidden;
+  }
+
+  button:not([disabled]),
+  [role="button"]:not([disabled]) {
+    cursor: pointer;
+  }
+
+  :focus-visible {
+    outline: 3px solid var(--color-blue);
+    outline-offset: 2px;
+  }
+
+  ::selection {
+    background: var(--color-yellow);
+    color: var(--ink);
+  }
+}
+
+@layer components {
+  .neo {
+    border: 3px solid var(--ink);
+    background-color: var(--card);
+  }
+
+  .neo-2 {
+    border: 2px solid var(--ink);
+  }
+
+  .neo-shadow {
+    box-shadow: 6px 6px 0 var(--ink);
+  }
+
+  .neo-shadow-sm {
+    box-shadow: 4px 4px 0 var(--ink);
+  }
+
+  .neo-shadow-xs {
+    box-shadow: 3px 3px 0 var(--ink);
+  }
+
+  .neo-press {
+    transition:
+      transform 90ms steps(2, end),
+      box-shadow 90ms steps(2, end);
+  }
+
+  .neo-press:hover {
+    transform: translate(-1px, -1px);
+  }
+
+  .neo-press:active {
+    transform: translate(3px, 3px);
+    box-shadow: 0 0 0 var(--ink);
+  }
+
+  .neo-grid {
+    background-image:
+      linear-gradient(to right, rgba(11, 11, 11, 0.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(11, 11, 11, 0.07) 1px, transparent 1px);
+    background-size: 28px 28px;
+  }
+
+  .neo-stripes {
+    background-image: repeating-linear-gradient(
+      -45deg,
+      rgba(11, 11, 11, 0.9) 0,
+      rgba(11, 11, 11, 0.9) 2px,
+      transparent 2px,
+      transparent 9px
+    );
+  }
+
+  .neo-display {
+    font-weight: 900;
+    letter-spacing: -0.035em;
+    line-height: 0.95;
+    text-transform: uppercase;
+  }
+
+  .neo-mono {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .neo-input {
+    border: 2px solid var(--ink);
+    background: #fff;
+    box-shadow: 3px 3px 0 var(--ink);
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 700;
+    padding: 0.35rem 0.5rem;
+    min-height: 2rem;
+  }
+
+  .neo-scroll::-webkit-scrollbar {
+    height: 10px;
+    width: 10px;
+  }
+
+  .neo-scroll::-webkit-scrollbar-thumb {
+    background: var(--ink);
+  }
+
+  .neo-scroll::-webkit-scrollbar-track {
+    background: var(--muted);
+  }
+}
+
+@keyframes neo-tick {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
+}
+
+.neo-live {
+  animation: neo-tick 1.6s steps(2, end) infinite;
+}
+
+@keyframes neo-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.neo-in {
+  animation: neo-in 280ms steps(4, end) both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .neo-live,
+  .neo-in {
+    animation: none;
+  }
+  .neo-press,
+  .neo-press:hover,
+  .neo-press:active {
+    transition: none;
+    transform: none;
+  }
+}
+
+/* Recharts overrides — square, ink, mono ticks, no gradients. */
+.recharts-cartesian-axis-line,
+.recharts-cartesian-axis-tick-line {
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.recharts-cartesian-grid line {
+  stroke: rgba(11, 11, 11, 0.14);
+}
+
+.recharts-text {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  fill: var(--muted-foreground);
+}
+
+.recharts-legend-item-text {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.recharts-surface:focus,
+.recharts-wrapper:focus {
+  outline: none;
+}

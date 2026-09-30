@@ -1,0 +1,55 @@
+# SAFAR route basket (doc 01: "Route basket based on DGCA").
+#
+# status: INDICATIVE — the city-pairs and weights below are a working basket
+# for development. ps.md requires the index to be built "based on PSD given
+# routes and weights"; replace `routes[*].weight` with the official values and
+# set status: OFFICIAL when they are supplied. Weights are relative (they are
+# normalised to sum to 1 by the index engine).
+version: "2026-indicative-1"
+status: INDICATIVE
+weights_source: "Indicative domestic passenger shares; awaiting PSD/DGCA-supplied weights"
+effective_from: "2026-01-01"
+
+airports:
+  - {code: DEL, city: Delhi, name: Indira Gandhi International}
+  - {code: BOM, city: Mumbai, name: Chhatrapati Shivaji Maharaj International}
+  - {code: BLR, city: Bengaluru, name: Kempegowda International}
+  - {code: CCU, city: Kolkata, name: Netaji Subhas Chandra Bose International}
+  - {code: HYD, city: Hyderabad, name: Rajiv Gandhi International}
+  - {code: MAA, city: Chennai, name: Chennai International}
+  - {code: COK, city: Kochi, name: Cochin International}
+  - {code: JAI, city: Jaipur, name: Jaipur International}
+  - {code: GOI, city: Goa, name: Dabolim}
+  - {code: PNQ, city: Pune, name: Pune Airport}
+  - {code: IXC, city: Chandigarh, name: Chandigarh International}
+  - {code: TRV, city: Thiruvananthapuram, name: Trivandrum International}
+  - {code: LKO, city: Lucknow, name: Chaudhary Charan Singh International}
+  - {code: IDR, city: Indore, name: Devi Ahilyabai Holkar}
+  - {code: VNS, city: Varanasi, name: Lal Bahadur Shastri International}
+
+# distance_km: great-circle distance between airport reference points.
+routes:
+  - {origin: DEL, destination: BOM, distance_km: 1138, region: West, weight: 4.2}
+  - {origin: DEL, destination: BLR, distance_km: 1710, region: South, weight: 3.6}
+  - {origin: DEL, destination: HYD, distance_km: 1267, region: South, weight: 2.9}
+  - {origin: BOM, destination: BLR, distance_km: 834, region: South, weight: 2.4}
+  - {origin: DEL, destination: CCU, distance_km: 1313, region: East, weight: 2.1}
+  - {origin: BLR, destination: HYD, distance_km: 456, region: South, weight: 1.9}
+  - {origin: MAA, destination: DEL, distance_km: 1760, region: South, weight: 1.8}
+  - {origin: BLR, destination: COK, distance_km: 367, region: South, weight: 1.7}
+  - {origin: DEL, destination: COK, distance_km: 2049, region: South, weight: 1.6}
+  - {origin: DEL, destination: JAI, distance_km: 232, region: North, weight: 1.5}
+  - {origin: HYD, destination: BOM, distance_km: 623, region: West, weight: 1.4}
+  - {origin: DEL, destination: PNQ, distance_km: 1156, region: West, weight: 1.3}
+  - {origin: DEL, destination: TRV, distance_km: 2233, region: South, weight: 1.1}
+  - {origin: CCU, destination: BLR, distance_km: 1547, region: East, weight: 1.1}
+  - {origin: DEL, destination: IXC, distance_km: 236, region: North, weight: 1.0}
+  - {origin: BLR, destination: MAA, distance_km: 268, region: South, weight: 1.0}
+  - {origin: BOM, destination: CCU, distance_km: 1666, region: East, weight: 1.0}
+  - {origin: HYD, destination: CCU, distance_km: 1207, region: East, weight: 0.9}
+  - {origin: BOM, destination: GOI, distance_km: 425, region: West, weight: 0.9}
+  - {origin: PNQ, destination: BLR, distance_km: 723, region: West, weight: 0.7}
+  - {origin: CCU, destination: PNQ, distance_km: 1577, region: East, weight: 0.6}
+  - {origin: DEL, destination: VNS, distance_km: 667, region: North, weight: 0.6}
+  - {origin: IDR, destination: DEL, distance_km: 663, region: Central, weight: 0.6}
+  - {origin: DEL, destination: LKO, distance_km: 423, region: North, weight: 0.5}

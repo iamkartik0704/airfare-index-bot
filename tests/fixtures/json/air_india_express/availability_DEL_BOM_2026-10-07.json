@@ -1,0 +1,65 @@
+{
+  "_fixture": "Modelled on the Navitaire dotREZ availability payload; replace with a genuine capture via scripts/scraper/capture_fixture.py",
+  "data": {
+    "currencyCode": "INR",
+    "trips": [
+      {
+        "date": "2026-10-07T00:00:00",
+        "journeysAvailable": [
+          {
+            "designator": {
+              "origin": "DEL",
+              "destination": "BOM",
+              "departure": "2026-10-07T10:20:00",
+              "arrival": "2026-10-07T12:40:00"
+            },
+            "stops": 0,
+            "isSoldOut": false,
+            "segments": [
+              {
+                "identifier": {
+                  "carrierCode": "IX",
+                  "identifier": "1044"
+                }
+              }
+            ],
+            "fares": [
+              {
+                "productClass": "EC",
+                "fareFamily": "Xpress Lite",
+                "availableCount": 2,
+                "passengerFares": [
+                  {
+                    "passengerType": "ADT",
+                    "serviceCharges": [
+                      {
+                        "type": "FarePrice",
+                        "code": "",
+                        "amount": 4210.0
+                      },
+                      {
+                        "type": "Tax",
+                        "code": "K3",
+                        "amount": 211.0
+                      },
+                      {
+                        "type": "Tax",
+                        "code": "UDF",
+                        "amount": 62.0
+                      },
+                      {
+                        "type": "Tax",
+                        "code": "ASF",
+                        "amount": 236.0
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

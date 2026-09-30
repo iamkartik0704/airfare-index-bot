@@ -1,0 +1,106 @@
+{
+  "_fixture": "Modelled on the Navitaire dotREZ availability payload the IndiGo booking app requests; replace with a genuine capture via scripts/scraper/capture_fixture.py",
+  "data": {
+    "currencyCode": "INR",
+    "trips": [
+      {
+        "date": "2026-10-07T00:00:00",
+        "journeysAvailable": [
+          {
+            "designator": {"origin": "DEL", "destination": "BOM", "departure": "2026-10-07T06:05:00", "arrival": "2026-10-07T08:20:00"},
+            "stops": 0,
+            "isSoldOut": false,
+            "segments": [{"identifier": {"carrierCode": "6E", "identifier": "2134"}}],
+            "fares": [
+              {
+                "productClass": "R",
+                "fareFamily": "Saver",
+                "availableCount": 4,
+                "passengerFares": [{
+                  "passengerType": "ADT",
+                  "serviceCharges": [
+                    {"type": "FarePrice", "code": "", "amount": 4617.0},
+                    {"type": "Tax", "code": "K3", "amount": 257.0},
+                    {"type": "Tax", "code": "UDF", "amount": 62.0},
+                    {"type": "Tax", "code": "ASF", "amount": 236.0},
+                    {"type": "Tax", "code": "PSF", "amount": 91.0}
+                  ]
+                }]
+              },
+              {
+                "productClass": "J",
+                "fareFamily": "Flexi Plus",
+                "availableCount": 9,
+                "passengerFares": [{
+                  "passengerType": "ADT",
+                  "serviceCharges": [
+                    {"type": "FarePrice", "code": "", "amount": 5980.0},
+                    {"type": "Tax", "code": "K3", "amount": 324.0},
+                    {"type": "Tax", "code": "UDF", "amount": 62.0},
+                    {"type": "Tax", "code": "ASF", "amount": 236.0},
+                    {"type": "Tax", "code": "PSF", "amount": 91.0}
+                  ]
+                }]
+              }
+            ]
+          },
+          {
+            "designator": {"origin": "DEL", "destination": "BOM", "departure": "2026-10-07T09:40:00", "arrival": "2026-10-07T11:55:00"},
+            "stops": 0,
+            "isSoldOut": true,
+            "segments": [{"identifier": {"carrierCode": "6E", "identifier": "5021"}}],
+            "fares": []
+          },
+          {
+            "designator": {"origin": "DEL", "destination": "BOM", "departure": "2026-10-07T21:15:00", "arrival": "2026-10-07T23:30:00"},
+            "stops": 0,
+            "isSoldOut": false,
+            "segments": [{"identifier": {"carrierCode": "6E", "identifier": "6814"}}],
+            "fares": [
+              {
+                "productClass": "R",
+                "fareFamily": "Saver",
+                "availableCount": 1,
+                "passengerFares": [{
+                  "passengerType": "ADT",
+                  "serviceCharges": [
+                    {"type": "FarePrice", "code": "", "amount": 3895.5},
+                    {"type": "Tax", "code": "K3", "amount": 221.0},
+                    {"type": "Tax", "code": "UDF", "amount": 62.0},
+                    {"type": "Tax", "code": "ASF", "amount": 236.0},
+                    {"type": "Tax", "code": "PSF", "amount": 91.0}
+                  ]
+                }]
+              }
+            ]
+          },
+          {
+            "designator": {"origin": "DEL", "destination": "BOM", "departure": "2026-10-07T13:00:00", "arrival": "2026-10-07T17:45:00"},
+            "stops": 1,
+            "isSoldOut": false,
+            "segments": [
+              {"identifier": {"carrierCode": "6E", "identifier": "711"}},
+              {"identifier": {"carrierCode": "6E", "identifier": "404"}}
+            ],
+            "fares": [
+              {
+                "productClass": "R",
+                "fareFamily": "Saver",
+                "availableCount": 7,
+                "passengerFares": [{
+                  "passengerType": "ADT",
+                  "serviceCharges": [
+                    {"type": "FarePrice", "code": "", "amount": 5210.0},
+                    {"type": "Tax", "code": "K3", "amount": 290.0},
+                    {"type": "Tax", "code": "UDF", "amount": 124.0},
+                    {"type": "Tax", "code": "ASF", "amount": 472.0}
+                  ]
+                }]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

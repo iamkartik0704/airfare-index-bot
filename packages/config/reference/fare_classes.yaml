@@ -1,0 +1,35 @@
+# Fare-class taxonomy and hedonic quality factors (doc 09: Q(0)/Q(d)).
+#
+# status: INDICATIVE — quality_factor values are working placeholders that rank
+# fare families by bundled attributes (baggage, meals, changeability, seat
+# pitch). The official hedonic methodology must come from NSO; replace the
+# factors (or set SAFAR_INDEX__HEDONIC_ADJUSTMENT=false) before publication.
+status: INDICATIVE
+note: "Quality factors are indicative placeholders pending NSO hedonic methodology."
+default_class: ECONOMY_STANDARD
+classes:
+  - code: ECONOMY_SAVER
+    label: Economy saver / lite
+    cabin: ECONOMY
+    quality_factor: 0.85
+    aliases: [SAVER, LITE, "ECO LITE", "ECONOMY LITE", "HAND BAGGAGE ONLY", "ZERO BAGGAGE", "COMFORT LITE", BASIC, "SAVER FARE", "ECONOMY VALUE LITE", "ECONOMY VALUE", "XPRESS LITE", SPICESAVER]
+  - code: ECONOMY_STANDARD
+    label: Economy standard / value
+    cabin: ECONOMY
+    quality_factor: 1.00
+    aliases: [ECONOMY, REGULAR, VALUE, STANDARD, PUBLISHED, "ECONOMY COMFORT", SAVER_PLUS, "XPRESS VALUE", "ECONOMY CLASSIC", CLASSIC, "RETAIL FARE", "STUDENT", "SENIOR CITIZEN"]
+  - code: ECONOMY_FLEX
+    label: Economy flexi
+    cabin: ECONOMY
+    quality_factor: 1.20
+    aliases: [FLEX, FLEXI, "FLEXI PLUS", "ECONOMY FLEX", "ECONOMY FLEXI", "SPICEFLEX", "XPRESS FLEX", "SUPER 6E", "SUPER6E", "COMFORT PLUS", "ECONOMY FLEX PLUS", "FLEXI FARE"]
+  - code: PREMIUM_ECONOMY
+    label: Premium economy
+    cabin: PREMIUM_ECONOMY
+    quality_factor: 1.55
+    aliases: ["PREMIUM ECONOMY", "PREMIUM", "SPICEMAX", "STRETCH", "6E STRETCH", "XPRESS BIZ"]
+  - code: BUSINESS
+    label: Business
+    cabin: BUSINESS
+    quality_factor: 2.40
+    aliases: [BUSINESS, "BUSINESS CLASS", "BUSINESS FLEX", "BUSINESS SAVER"]

@@ -1,0 +1,25 @@
+{
+  "_fixture": "Modelled on an Amadeus DX-style air-bounds payload; replace with a genuine capture via scripts/scraper/capture_fixture.py",
+  "data": {
+    "airBoundGroups": [
+      {
+        "boundDetails": {"originLocationCode": "DEL", "destinationLocationCode": "BOM", "segments": [{"flightId": "SEG-AI2993-DELBOM-20261007"}]},
+        "airBounds": [
+          {"fareFamilyCode": "ECOVALUE", "availabilityDetails": [{"quota": 6}], "prices": {"totalPrices": [{"base": 5520, "totalTaxes": 890, "total": 6410, "currencyCode": "INR"}]}},
+          {"fareFamilyCode": "ECOCLASSIC", "availabilityDetails": [{"quota": 9}], "prices": {"totalPrices": [{"base": 6240, "totalTaxes": 880, "total": 7120, "currencyCode": "INR"}]}},
+          {"fareFamilyCode": "ECOFLEX", "availabilityDetails": [{"quota": 0}], "prices": {"totalPrices": [{"base": 8100, "totalTaxes": 960, "total": 9060, "currencyCode": "INR"}]}}
+        ]
+      },
+      {
+        "boundDetails": {"originLocationCode": "DEL", "destinationLocationCode": "BOM", "segments": [{"flightId": "SEG-AI805-DELBOM-20261007"}]},
+        "airBounds": []
+      }
+    ]
+  },
+  "dictionaries": {
+    "flight": {
+      "SEG-AI2993-DELBOM-20261007": {"marketingAirlineCode": "AI", "marketingFlightNumber": "2993", "departure": {"dateTime": "2026-10-07T07:00:00+05:30"}, "arrival": {"dateTime": "2026-10-07T09:15:00+05:30"}},
+      "SEG-AI805-DELBOM-20261007": {"marketingAirlineCode": "AI", "marketingFlightNumber": "805", "departure": {"dateTime": "2026-10-07T20:00:00+05:30"}, "arrival": {"dateTime": "2026-10-07T22:10:00+05:30"}}
+    }
+  }
+}

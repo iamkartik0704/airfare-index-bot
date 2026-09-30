@@ -1,0 +1,138 @@
+# Source registry and per-source scraping policy (docs 05, 10, 15).
+#
+# Live sources ship `enabled: false`. Enable a source only after its terms of
+# service have been reviewed (`tos_reviewed: true`) and robots.txt permits the
+# search path the adapter requests — the governance layer enforces robots.txt
+# at runtime regardless of this flag.
+#
+# robots.txt snapshot (fetched once with the SAFAR bot UA on 2026-09-30):
+#   akasaair.com         no Disallow rules
+#   spicejet.com         disallows /api/v1, /public/, /externalBooking
+#   airindiaexpress.com  disallows /flight-availability
+#   easemytrip.com       disallows /flight-search/listing*
+#   cleartrip.com        disallows /flights/search*
+#   ixigo.com            disallows /flights/search, /api/ ; Crawl-delay: 10
+#   goindigo.in, airindia.com, makemytrip.com, yatra.com: connection refused
+#     for the bot UA (robots.txt unreachable → fail-closed, not scraped)
+#
+# channel_priority: lower wins when the same flight is observed on several
+# channels (airline direct = 1, OTA = 5, simulator direct = 8, simulator OTA = 9).
+sources:
+  - id: indigo
+    name: IndiGo (goindigo.in)
+    kind: AIRLINE
+    base_url: https://www.goindigo.in
+    carrier: 6E
+    fetch_mode: browser
+    rate_limit_rpm: 6
+    max_concurrency: 1
+    crawl_delay_s: 10
+    channel_priority: 1
+    notes: "Stage 3 reference adapter; XHR capture of the availability JSON."
+  - id: air_india
+    name: Air India (airindia.com)
+    kind: AIRLINE
+    base_url: https://www.airindia.com
+    carrier: AI
+    fetch_mode: browser
+    rate_limit_rpm: 6
+    crawl_delay_s: 10
+    channel_priority: 1
+  - id: air_india_express
+    name: Air India Express (airindiaexpress.com)
+    kind: AIRLINE
+    base_url: https://www.airindiaexpress.com
+    carrier: IX
+    fetch_mode: browser
+    rate_limit_rpm: 5
+    crawl_delay_s: 12
+    channel_priority: 1
+    notes: "robots.txt disallows /flight-availability; adapter requests are blocked by governance."
+  - id: akasa
+    name: Akasa Air (akasaair.com)
+    kind: AIRLINE
+    base_url: https://www.akasaair.com
+    carrier: QP
+    fetch_mode: browser
+    rate_limit_rpm: 5
+    crawl_delay_s: 12
+    channel_priority: 1
+  - id: spicejet
+    name: SpiceJet (spicejet.com)
+    kind: AIRLINE
+    base_url: https://www.spicejet.com
+    carrier: SG
+    fetch_mode: browser
+    rate_limit_rpm: 5
+    crawl_delay_s: 12
+    channel_priority: 1
+    notes: "robots.txt disallows /api/v1; adapter reads the rendered search page only."
+  - id: makemytrip
+    name: MakeMyTrip
+    kind: OTA
+    base_url: https://www.makemytrip.com
+    fetch_mode: browser
+    rate_limit_rpm: 4
+    crawl_delay_s: 15
+    channel_priority: 5
+  - id: yatra
+    name: Yatra
+    kind: OTA
+    base_url: https://www.yatra.com
+    fetch_mode: browser
+    rate_limit_rpm: 4
+    crawl_delay_s: 15
+    channel_priority: 5
+  - id: easemytrip
+    name: EaseMyTrip
+    kind: OTA
+    base_url: https://www.easemytrip.com
+    fetch_mode: browser
+    rate_limit_rpm: 4
+    crawl_delay_s: 15
+    channel_priority: 5
+    notes: "robots.txt disallows /flight-search/listing*."
+  - id: cleartrip
+    name: Cleartrip
+    kind: OTA
+    base_url: https://www.cleartrip.com
+    fetch_mode: browser
+    rate_limit_rpm: 3
+    crawl_delay_s: 20
+    channel_priority: 5
+    notes: "robots.txt disallows /flights/search*."
+  - id: ixigo
+    name: ixigo
+    kind: OTA
+    base_url: https://www.ixigo.com
+    fetch_mode: browser
+    rate_limit_rpm: 4
+    crawl_delay_s: 15
+    channel_priority: 5
+    notes: "robots.txt disallows /flights/search and /api/; Crawl-delay 10."
+  - id: simulated
+    name: SAFAR market simulator (synthetic)
+    channel: direct
+    kind: SIMULATED
+    base_url: sim://market
+    fetch_mode: simulated
+    enabled: true
+    is_synthetic: true
+    rate_limit_rpm: 6000
+    max_concurrency: 3
+    channel_priority: 8
+    tos_reviewed: true
+    notes: "Deterministic synthetic market for demos and backfill. Every quote is flagged is_synthetic."
+  - id: simulated_ota
+    name: SAFAR market simulator — OTA channel (synthetic)
+    channel: ota
+    kind: SIMULATED
+    base_url: sim://market
+    fetch_mode: simulated
+    enabled: true
+    is_synthetic: true
+    rate_limit_rpm: 6000
+    max_concurrency: 3
+    channel_priority: 9
+    tos_reviewed: true
+    notes: "Same synthetic flights as `simulated`, sold through an OTA channel with a convenience fee."

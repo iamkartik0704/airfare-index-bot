@@ -1,0 +1,100 @@
+# SAFAR prototype deployment (doc 16 target A): PostgreSQL + API + worker +
+# scheduler + dashboard on one host. Copy .env.example to .env first.
+#
+#   docker compose up --build                     # full stack
+#   docker compose --profile demo run --rm demo   # load 35 days of SIMULATED data
+name: safar
+
+x-backend: &backend
+  build:
+    context: ../..
+    dockerfile: infrastructure/docker/Dockerfile.api
+  image: safar-backend:latest
+  env_file: ../../.env
+  environment:
+    SAFAR_DATABASE_URL: postgresql+psycopg://${SAFAR_DB_USER:-safar}:${SAFAR_DB_PASSWORD:?set SAFAR_DB_PASSWORD in .env}@db:5432/${SAFAR_DB_NAME:-safar}
+    SAFAR_EVIDENCE_DIR: /data/evidence
+  volumes:
+    - evidence:/data/evidence
+  restart: unless-stopped
+
+services:
+  db:
+    image: postgres:16-alpine
+    environment:
+      POSTGRES_USER: ${SAFAR_DB_USER:-safar}
+      POSTGRES_PASSWORD: ${SAFAR_DB_PASSWORD:?set SAFAR_DB_PASSWORD in .env}
+      POSTGRES_DB: ${SAFAR_DB_NAME:-safar}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    ports:
+      - "${SAFAR_DB_PORT:-5432}:5432"
+    restart: unless-stopped
+
+  migrate:
+    <<: *backend
+    command: ["alembic", "upgrade", "head"]
+    restart: "no"
+    depends_on:
+      db:
+        condition: service_healthy
+
+  api:
+    <<: *backend
+    ports:
+      - "${SAFAR_API_PORT:-8000}:8000"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  worker:
+    <<: *backend
+    command: ["safar", "worker"]
+    healthcheck:
+      disable: true
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  scheduler:
+    <<: *backend
+    command: ["safar", "scheduler"]
+    healthcheck:
+      disable: true
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+  dashboard:
+    build:
+      context: ../../apps/dashboard
+      dockerfile: Dockerfile
+    ports:
+      - "${SAFAR_DASHBOARD_PORT:-3000}:80"
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  demo:
+    <<: *backend
+    profiles: ["demo"]
+    command: ["safar", "demo", "--days", "35"]
+    environment:
+      SAFAR_DATABASE_URL: postgresql+psycopg://${SAFAR_DB_USER:-safar}:${SAFAR_DB_PASSWORD:?set SAFAR_DB_PASSWORD in .env}@db:5432/${SAFAR_DB_NAME:-safar}
+      SAFAR_EVIDENCE_DIR: /data/evidence
+      SAFAR_SIMULATED_SOURCE_ENABLED: "true"
+    healthcheck:
+      disable: true
+    restart: "no"
+    depends_on:
+      migrate:
+        condition: service_completed_successfully
+
+volumes:
+  pgdata:
+  evidence:

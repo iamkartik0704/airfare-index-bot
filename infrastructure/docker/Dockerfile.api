@@ -1,0 +1,35 @@
+# Backend image shared by the api, worker, scheduler and migrate services.
+#   docker build -f infrastructure/docker/Dockerfile.api -t safar-backend .
+# Build with --build-arg INSTALL_BROWSER=true to include Playwright + Chromium
+# (needed only when a live browser-mode source is enabled).
+FROM python:3.12-slim
+
+ARG INSTALL_BROWSER=false
+ENV PYTHONDONTWRITEBYTECODE=1 \
+    PYTHONUNBUFFERED=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    SAFAR_EVIDENCE_DIR=/data/evidence
+
+WORKDIR /app
+COPY requirements.txt ./
+RUN pip install -r requirements.txt \
+    && if [ "$INSTALL_BROWSER" = "true" ]; then \
+         pip install "playwright>=1.45" && playwright install --with-deps chromium; \
+       fi
+
+COPY pyproject.toml README.md alembic.ini ./
+COPY packages ./packages
+COPY apps/__init__.py ./apps/__init__.py
+COPY apps/api ./apps/api
+COPY scripts ./scripts
+COPY infrastructure/db ./infrastructure/db
+RUN pip install --no-deps -e . \
+    && useradd --create-home --uid 10001 safar \
+    && mkdir -p /data/evidence && chown -R safar /data
+
+USER safar
+EXPOSE 8000
+HEALTHCHECK --interval=30s --timeout=5s --start-period=20s \
+  CMD python -c "import urllib.request,sys; sys.exit(0 if urllib.request.urlopen('http://127.0.0.1:8000/api/v1/health/live').status==200 else 1)" || exit 1
+CMD ["uvicorn", "apps.api.main:app", "--host", "0.0.0.0", "--port", "8000", "--proxy-headers"]
