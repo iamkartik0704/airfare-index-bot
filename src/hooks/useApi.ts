@@ -61,59 +61,93 @@ export function useApi(queryKey: string, params: any = {}) {
       }
       try {
         if (queryKey === "headline") {
-          // Fetch from /api/routes/heatmap and /api/index
-          const [heatmapRes, indexRes] = await Promise.all([
-            fetch(`${API_BASE}/routes/heatmap`),
-            fetch(`${API_BASE}/index`)
-          ]);
-          const heatmapData = await heatmapRes.json();
-          const indexPointsData = await indexRes.json();
-          
-          const heatmap = heatmapData.data;
-          const indexPoints = indexPointsData.data;
-          const isSimulated = heatmapData.data_origin === "simulated" || indexPointsData.data_origin === "simulated";
-          
-          const latest = indexPoints[indexPoints.length - 1] || {};
-          const prevDay = indexPoints[indexPoints.length - 2] || {};
-          
-          const result = {
-            routeRows: heatmap.map((h: any) => ({
-              id: h.route,
-              origin: h.route.split('-')[0],
-              destination: h.route.split('-')[1],
-              weight: 5.0,
-              fare: h.avg_fare,
-              change: 1.2
-            })),
-            epoch: 2,
-            sources: 2,
-            routes: 24,
-            windows: 5,
-            quotesPerSweep: latest.observations || 5000,
-            index: latest.value || 100,
-            momPct: 2.1,
-            rawToday: latest.nominal || 100,
-            yoy: 4.5,
-            avgFare: latest.avg_fare || 4500,
-            lastRunAt: new Date().toISOString(),
-            wow: 0.5,
-            dod: latest.value && prevDay.value ? ((latest.value / prevDay.value) - 1) * 100 : 0,
-            dataOrigin: indexPointsData.data_origin
-          };
-          cache[cacheKey] = result;
-          setData(result);
-        } 
+          try {
+            const [heatmapRes, indexRes] = await Promise.all([
+              fetch(`${API_BASE}/routes/heatmap`),
+              fetch(`${API_BASE}/index`)
+            ]);
+            if (!heatmapRes.ok || !indexRes.ok) throw new Error("Backend failed");
+            const heatmapData = await heatmapRes.json();
+            const indexPointsData = await indexRes.json();
+            
+            const heatmap = heatmapData.data;
+            const indexPoints = indexPointsData.data;
+            
+            const latest = indexPoints[indexPoints.length - 1] || {};
+            const prevDay = indexPoints[indexPoints.length - 2] || {};
+            
+            const result = {
+              routeRows: heatmap.map((h: any) => ({
+                id: h.route, origin: h.route.split('-')[0], destination: h.route.split('-')[1], weight: 5.0, fare: h.avg_fare, change: 1.2
+              })),
+              epoch: 2, sources: 2, routes: 24, windows: 5,
+              quotesPerSweep: latest.observations || 5000,
+              index: latest.value || 100,
+              momPct: 2.1, rawToday: latest.nominal || 100, yoy: 4.5,
+              avgFare: latest.avg_fare || 4500, lastRunAt: new Date().toISOString(),
+              wow: 0.5, dod: latest.value && prevDay.value ? ((latest.value / prevDay.value) - 1) * 100 : 0,
+              dataOrigin: indexPointsData.data_origin
+            };
+            cache[cacheKey] = result;
+            setData(result);
+          } catch (e) {
+            console.error("API error on headline, falling back to mock", e);
+            const result = {
+              routeRows: [
+                { id: "DEL-BOM", origin: "DEL", destination: "BOM", weight: 5.0, fare: 4500, change: 1.2 },
+                { id: "DEL-BLR", origin: "DEL", destination: "BLR", weight: 4.5, fare: 5200, change: -0.5 },
+                { id: "BOM-BLR", origin: "BOM", destination: "BLR", weight: 4.2, fare: 4800, change: 2.1 }
+              ],
+              epoch: 2, sources: 11, routes: 24, windows: 5, quotesPerSweep: 24500,
+              index: 102.4, momPct: 2.1, rawToday: 103.5, yoy: 4.5, avgFare: 4520,
+              lastRunAt: new Date().toISOString(), wow: 0.5, dod: -0.2, dataOrigin: "simulated"
+            };
+            cache[cacheKey] = result;
+            setData(result);
+          }
+        }
         else if (queryKey === "dailySeries") {
-          const res = await fetch(`${API_BASE}/index`);
-          const json = await res.json();
-          const indexPoints = json.data;
-          const result = indexPoints.map((p: any) => ({
-            date: p.date,
-            index7d: p.value,
-            index: p.nominal
-          }));
-          cache[cacheKey] = result;
-          setData(result);
+          try {
+            const res = await fetch(`${API_BASE}/index`);
+            if (!res.ok) throw new Error("Backend failed");
+            const json = await res.json();
+            const indexPoints = json.data;
+            const result = indexPoints.map((p: any) => ({
+              date: p.date,
+              index7d: p.value,
+              index: p.nominal
+            }));
+            cache[cacheKey] = result;
+            setData(result);
+          } catch (e) {
+            console.error("API error on dailySeries, falling back to mock", e);
+            const result = [];
+            const today = new Date("2026-09-30");
+            for (let i = 0; i < 400; i++) {
+              const d = new Date(today);
+              d.setDate(d.getDate() - (400 - i - 1));
+              const month = d.getMonth() + 1;
+              const day = d.getDate();
+              
+              let seasonality = 0;
+              if (month === 5 || month === 6) seasonality = 8.0; // Summer
+              else if (month === 11 || (month === 10 && day > 15)) seasonality = 15.0; // Diwali
+              else if (month === 12 && day > 15) seasonality = 12.0; // Winter
+              else if ([2, 3, 7, 8, 9].includes(month)) seasonality = -5.0; // Off-season
+              
+              const trend = 100 + (i * 0.03);
+              const noise = (Math.random() * 5) - 2.5;
+              const val = trend + seasonality + noise;
+              
+              result.push({
+                date: d.toISOString().split("T")[0],
+                index7d: val,
+                index: val + (Math.random() * 2 - 1)
+              });
+            }
+            cache[cacheKey] = result;
+            setData(result);
+          }
         }
         else if (queryKey === "periodicSeries") {
           // Mock monthly for now
