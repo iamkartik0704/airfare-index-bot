@@ -12,7 +12,17 @@ import "./index.css";
 // Lazy load route components for better code splitting
 const Landing = lazy(() => import("./pages/Landing.tsx"));
 const AuthPage = lazy(() => import("./pages/Auth.tsx"));
-const Dashboard = lazy(() => import("./pages/Dashboard.tsx"));
+const AppShell = lazy(() => import("./components/AppShell.tsx"));
+const Overview = lazy(() => import("./pages/Overview.tsx"));
+const Sectors = lazy(() => import("./pages/Sectors.tsx"));
+const LeadTime = lazy(() => import("./pages/LeadTime.tsx"));
+const Drivers = lazy(() => import("./pages/Drivers.tsx"));
+const Pipeline = lazy(() => import("./pages/Pipeline.tsx"));
+const Explorer = lazy(() => import("./pages/Explorer.tsx"));
+const Validation = lazy(() => import("./pages/Validation.tsx"));
+const Methodology = lazy(() => import("./pages/Methodology.tsx"));
+const ApiDocs = lazy(() => import("./pages/ApiDocs.tsx"));
+const Deck = lazy(() => import("./pages/Deck.tsx"));
 const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 
 // Simple loading fallback for route transitions
@@ -127,11 +137,25 @@ createRoot(document.getElementById("root")!).render(
               <Route
                 path="/dashboard"
                 element={
-                  <RequireAuth>
-                    <Dashboard />
+                  <RequireAuth
+                    title="Sign in to open the SAFAR console"
+                    description="The index, the collector audit trail and the validation results live behind sign-in."
+                  >
+                    <AppShell />
                   </RequireAuth>
                 }
-              />
+              >
+                <Route index element={<Overview />} />
+                <Route path="sectors" element={<Sectors />} />
+                <Route path="leadtime" element={<LeadTime />} />
+                <Route path="drivers" element={<Drivers />} />
+                <Route path="pipeline" element={<Pipeline />} />
+                <Route path="explorer" element={<Explorer />} />
+                <Route path="validation" element={<Validation />} />
+                <Route path="methodology" element={<Methodology />} />
+                <Route path="api" element={<ApiDocs />} />
+                <Route path="deck" element={<Deck />} />
+              </Route>
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>

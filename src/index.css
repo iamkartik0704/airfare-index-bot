@@ -1,14 +1,18 @@
-/* DO NOT CHANGE */
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 @custom-variant dark (&:is(.dark *));
 
-/* DO NOT CHANGE */
+/* SAFAR theme — Neobrutalism Minimalism.
+   Square corners, 3px ink borders, flat colour blocks, hard offset shadows,
+   zero gradients-as-decoration. Contrast is carried by weight and colour,
+   never by decoration. */
+
 @theme inline {
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: 0;
+  --radius-md: 0;
+  --radius-lg: 0;
+  --radius-xl: 0;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -40,87 +44,225 @@
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --font-sans: 'Archivo', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
 }
 
-/* CHANGE VALUES FOR THEME */
 :root {
-  --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
-  --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --radius: 0;
+  --paper: #f2efe6;
+  --ink: #0b0b0b;
+  --blue: #2b4cff;
+  --yellow: #ffd400;
+  --red: #ff4a1c;
+  --green: #00a878;
+  --violet: #b14eff;
+
+  --background: #f2efe6;
+  --foreground: #0b0b0b;
+  --card: #ffffff;
+  --card-foreground: #0b0b0b;
+  --popover: #ffffff;
+  --popover-foreground: #0b0b0b;
+  --primary: #2b4cff;
+  --primary-foreground: #ffffff;
+  --secondary: #ffd400;
+  --secondary-foreground: #0b0b0b;
+  --muted: #e6e1d4;
+  --muted-foreground: #5c5747;
+  --accent: #ff4a1c;
+  --accent-foreground: #ffffff;
+  --destructive: #ff4a1c;
+  --border: #0b0b0b;
+  --input: #0b0b0b;
+  --ring: #2b4cff;
+  --chart-1: #2b4cff;
+  --chart-2: #ff4a1c;
+  --chart-3: #00a878;
+  --chart-4: #ffd400;
+  --chart-5: #b14eff;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #0b0b0b;
+  --sidebar-primary: #2b4cff;
+  --sidebar-primary-foreground: #ffffff;
+  --sidebar-accent: #ffd400;
+  --sidebar-accent-foreground: #0b0b0b;
+  --sidebar-border: #0b0b0b;
+  --sidebar-ring: #2b4cff;
 }
 
 .dark {
-  --background: oklch(0.145 0 0);
-  --foreground: oklch(0.985 0 0);
-  --card: oklch(0.205 0 0);
-  --card-foreground: oklch(0.985 0 0);
-  --popover: oklch(0.205 0 0);
-  --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.922 0 0);
-  --primary-foreground: oklch(0.205 0 0);
-  --secondary: oklch(0.269 0 0);
-  --secondary-foreground: oklch(0.985 0 0);
-  --muted: oklch(0.269 0 0);
-  --muted-foreground: oklch(0.708 0 0);
-  --accent: oklch(0.269 0 0);
-  --accent-foreground: oklch(0.985 0 0);
-  --destructive: oklch(0.704 0.191 22.216);
-  --border: oklch(1 0 0 / 10%);
-  --input: oklch(1 0 0 / 15%);
-  --ring: oklch(0.556 0 0);
-  --chart-1: oklch(0.488 0.243 264.376);
-  --chart-2: oklch(0.696 0.17 162.48);
-  --chart-3: oklch(0.769 0.188 70.08);
-  --chart-4: oklch(0.627 0.265 303.9);
-  --chart-5: oklch(0.645 0.246 16.439);
-  --sidebar: oklch(0.205 0 0);
-  --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.488 0.243 264.376);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.269 0 0);
-  --sidebar-accent-foreground: oklch(0.985 0 0);
-  --sidebar-border: oklch(1 0 0 / 10%);
-  --sidebar-ring: oklch(0.556 0 0);
+  --background: #0b0b0b;
+  --foreground: #f2efe6;
+  --card: #161616;
+  --card-foreground: #f2efe6;
+  --popover: #161616;
+  --popover-foreground: #f2efe6;
+  --primary: #2b4cff;
+  --primary-foreground: #ffffff;
+  --secondary: #ffd400;
+  --secondary-foreground: #0b0b0b;
+  --muted: #222222;
+  --muted-foreground: #a8a294;
+  --accent: #ff4a1c;
+  --accent-foreground: #ffffff;
+  --destructive: #ff4a1c;
+  --border: #f2efe6;
+  --input: #f2efe6;
+  --ring: #ffd400;
+  --sidebar: #161616;
+  --sidebar-foreground: #f2efe6;
+  --sidebar-border: #f2efe6;
 }
 
 @layer base {
   * {
-    @apply border-border outline-ring/50;
+    @apply border-border;
+    border-radius: 0 !important;
   }
+
+  html {
+    -webkit-font-smoothing: antialiased;
+  }
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground font-sans;
+    font-feature-settings: 'ss01';
   }
+
   button:not([disabled]),
-  [role="button"]:not([disabled]) {
+  [role='button']:not([disabled]) {
     cursor: pointer;
   }
+
+  ::selection {
+    background: #ffd400;
+    color: #0b0b0b;
+  }
+}
+
+/* ------------------------------------------------------------ primitives -- */
+
+.neo {
+  border: 3px solid var(--ink);
+  background: var(--card);
+}
+
+.neo-2 {
+  border: 2px solid var(--ink);
+}
+
+.neo-shadow {
+  box-shadow: 6px 6px 0 var(--ink);
+}
+
+.neo-shadow-sm {
+  box-shadow: 4px 4px 0 var(--ink);
+}
+
+.neo-shadow-xs {
+  box-shadow: 3px 3px 0 var(--ink);
+}
+
+.neo-press {
+  transition:
+    transform 90ms steps(2, end),
+    box-shadow 90ms steps(2, end);
+}
+
+.neo-press:hover {
+  transform: translate(-2px, -2px);
+  box-shadow: 8px 8px 0 var(--ink);
+}
+
+.neo-press:active {
+  transform: translate(4px, 4px);
+  box-shadow: 0 0 0 var(--ink);
+}
+
+.neo-grid {
+  background-image:
+    linear-gradient(to right, rgba(11, 11, 11, 0.09) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(11, 11, 11, 0.09) 1px, transparent 1px);
+  background-size: 28px 28px;
+}
+
+.neo-dot {
+  background-image: radial-gradient(rgba(11, 11, 11, 0.16) 1.4px, transparent 1.4px);
+  background-size: 18px 18px;
+}
+
+.neo-stripes {
+  background-image: repeating-linear-gradient(
+    -45deg,
+    var(--ink) 0,
+    var(--ink) 2px,
+    transparent 2px,
+    transparent 8px
+  );
+}
+
+.neo-display {
+  font-weight: 900;
+  letter-spacing: -0.035em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.neo-mono {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+@keyframes neo-tick {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-4px); }
+  100% { transform: translateY(0); }
+}
+
+.neo-live {
+  animation: neo-tick 1.6s steps(2, end) infinite;
+}
+
+@keyframes neo-in {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.neo-in {
+  animation: neo-in 320ms steps(4, end) both;
+}
+
+.neo-scroll::-webkit-scrollbar {
+  height: 10px;
+  width: 10px;
+}
+
+.neo-scroll::-webkit-scrollbar-thumb {
+  background: var(--ink);
+}
+
+.neo-scroll::-webkit-scrollbar-track {
+  background: var(--muted);
+}
+
+/* recharts overrides — square, ink, no gradients */
+.recharts-cartesian-axis-line,
+.recharts-cartesian-axis-tick-line {
+  stroke: var(--ink);
+  stroke-width: 2;
+}
+
+.recharts-cartesian-grid line {
+  stroke: rgba(11, 11, 11, 0.18);
+}
+
+.recharts-text {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  fill: var(--muted-foreground);
+}
+
+.recharts-surface {
+  overflow: visible;
 }

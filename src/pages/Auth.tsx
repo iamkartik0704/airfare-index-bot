@@ -110,29 +110,32 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
   };
 
   return (
-    <div className="min-h-screen flex flex-col">
+    <div className="neo-grid flex min-h-screen flex-col bg-background">
 
       
       {/* Auth Content */}
-      <div className="flex-1 flex items-center justify-center">
+      <div className="flex-1 flex items-center justify-center p-4">
         <div className="flex items-center justify-center h-full flex-col">
-        <Card className="min-w-[350px] pb-0 border shadow-md">
+        <Card className="neo neo-shadow min-w-[340px] max-w-[420px] pb-0 bg-white">
           {step === "signIn" ? (
             <>
               <CardHeader className="text-center">
               <div className="flex justify-center">
                     <img
                       src={logo}
-                      alt="Lock Icon"
-                      width={64}
-                      height={64}
-                      className="rounded-lg mb-4 mt-4 cursor-pointer"
+                      alt="SAFAR"
+                      width={56}
+                      height={56}
+                      className="neo-2 mb-4 mt-5 bg-[#ffd400] p-2"
                       onClick={() => navigate("/")}
                     />
                   </div>
-                <CardTitle className="text-xl">Get Started</CardTitle>
+                <p className="neo-mono text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground">
+                  SAFAR · Air fare console
+                </p>
+                <CardTitle className="neo-display text-2xl">Sign in</CardTitle>
                 <CardDescription>
-                  Enter your email to log in or sign up
+                  Enter your email to open the index, or continue as guest
                 </CardDescription>
               </CardHeader>
               <form onSubmit={handleEmailSubmit}>
@@ -277,16 +280,8 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
             </>
           )}
 
-          <div className="py-4 px-6 text-xs text-center text-muted-foreground bg-muted border-t rounded-b-lg">
-            Secured by{" "}
-            <a
-              href="https://freebuff.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="underline hover:text-primary transition-colors"
-            >
-              freebuff.com
-            </a>
+          <div className="neo-mono border-t-[3px] border-[#0b0b0b] bg-[#0b0b0b] px-6 py-3 text-center text-[10px] uppercase tracking-[0.18em] text-[#f2efe6]">
+            Problem statement 26056 · MoSPI (DIID) · SIH 2026
           </div>
         </Card>
         </div>

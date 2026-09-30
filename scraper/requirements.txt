@@ -1,0 +1,9 @@
+scrapy>=2.11
+playwright>=1.44
+camoufox>=0.4
+tenacity>=8.2
+pandas>=2.2
+numpy>=1.26
+pydantic>=2.7
+python-dateutil>=2.9
+pytest>=8.0

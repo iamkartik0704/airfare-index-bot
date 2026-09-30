@@ -1,3 +1,74 @@
+# SAFAR — Statutory Air Fare Analytics & Reporting
+
+**Real-time Airfare Price Index (APIx) for India** · Problem Statement 26056 · MoSPI (DIID) · SIH 2026
+
+A fixed-basket, hedonic airfare price index built by automatically collecting fares from
+5 airline portals and 6 OTAs across 24 DGCA-weighted city-pairs and 5 advance-purchase
+windows, engineered to augment the *Transport and Communication* sub-group of the CPI.
+
+```
+APIx(d) = 100 · Σᵣ wᵣ · [Pᵣ(d)/Pᵣ(0)] · [Q(0)/Q(d)]
+```
+
+* **`wᵣ`** DGCA city-pair passenger share, fixed in the reference period (the CPI spending-weight rule)
+* **`Pᵣ`** booking-curve weighted median economy fare, all taxes and UDF, five booking windows
+* **`Q(d)`** hedonic quality of the observed fare mix (legroom, meals, changeability, CO₂)
+* **`0`** stored reference snapshot, seeded once and then fixed
+
+## What's in the box
+
+| Piece | Where |
+|---|---|
+| Index engine, cleaning funnel, fare model | `src/convex/lib/{index,engine,clean-ish}.ts` |
+| Source registry + ethics policy | `src/convex/lib/adapters.ts` |
+| Read API / console queries | `src/convex/apix.ts` |
+| Run pipeline, release ledger, API keys | `src/convex/pipeline.ts` |
+| Public `/api/v1/*` for NSO & RBI | `src/convex/http.ts` |
+| Console (index, sectors, lead-time, drivers, collector, explorer, validation, methodology, API, deck) | `src/pages/*.tsx` |
+| Python Scrapy/Playwright collector reference | `scraper/` |
+| Full design note + PPT speaker notes | `ARCHITECTURE.md` |
+
+## Console pages
+
+`/dashboard` index · `sectors` heat-map & contributions · `leadtime` booking curve ·
+`drivers` fuel/rupee/traffic decomposition · `pipeline` collector audit & compliance ·
+`explorer` raw → cleaned quotes · `validation` DGCA back-test · `methodology` PSI doc ·
+`api` endpoint reference · `deck` 12-slide presentation, live from the data.
+
+## Public API
+
+```bash
+curl -s "https://<deployment>.convex.cloud/api/v1/index/latest" \
+  -H "x-api-key: safar-demo-26056"
+```
+
+Endpoints: `/api/v1/health`, `/api/v1/index/latest`, `/api/v1/index/series?freq=monthly&days=400`,
+`/api/v1/basket`, `/api/v1/backtest`.
+
+## Running
+
+```bash
+bun install
+bunx convex dev --once   # push functions, regenerate types
+bun run dev
+
+cd scraper && pip install -r requirements.txt && pytest -q
+```
+
+## Design principles
+
+1. **Statutory by construction** — the same estimator family, basket discipline and sub-group
+   reporting the CPI uses, so SAFAR can be adopted rather than admired.
+2. **Ethical by construction** — robots.txt is parsed per host and re-checked every run,
+   rate limits are code defaults, and CAPTCHAs are never bypassed: a challenge is logged and
+   the cell is imputed and flagged.
+3. **Reproducible** — the demo engine is a pure function of (date, route, carrier, channel,
+   epoch); every number on screen can be regenerated from the seed.
+
+---
+
+## Template notes (Vite + Convex + React Router)
+
 ## Overview
 
 This project uses the following tech stack:
