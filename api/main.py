@@ -93,8 +93,13 @@ def get_explorer(routeId: str = "DEL-BOM", offsetDays: int = 0):
         if not results:
             # Fallback mock for empty dates
             return {
-                "date": target_str, "route": {"origin": routeId.split('-')[0], "destination": routeId.split('-')[1]},
-                "routeFare": 0, "report": {"rawCount": 0}, "byLead": [], "carriers": [], "rawSample": [], "cleanedSample": []
+                "date": target_str, "route": {"origin": routeId.split('-')[0], "destination": routeId.split('-')[1], "distanceKm": 1148, "weight": 5.0},
+                "routeFare": 0, "report": {
+                    "rawCount": 0, "droppedSoldOut": 0, "droppedCancelled": 0,
+                    "droppedDuplicate": 0, "droppedOutlier": 0, "droppedInvalid": 0,
+                    "imputedCount": 0, "keptCount": 0, "coverage": 0.0,
+                    "medianTotal": 0, "madTotal": 0, "byChannel": {"airline": 0, "ota": 0}
+                }, "byLead": [], "carriers": [], "rawSample": [], "cleanedSample": []
             }
             
         df = pd.DataFrame(results, columns=["id", "source", "airline", "fare_class", "base_fare", "taxes", "convenience_fee", "total_fare", "quality", "imputed", "lead_days"])
@@ -440,6 +445,25 @@ def get_releases():
     return [
         { "_id": "rel-1", "period": "Sep 2026", "frequency": "Monthly", "value": 105.2, "publishedAt": "2026-09-30T10:00:00Z", "channels": ["API", "Dashboard"] }
     ]
+
+@app.post("/api/sweep")
+def run_sweep():
+    import subprocess
+    import threading
+    
+    def run_scraper():
+        try:
+            # We run it in the background so the request doesn't hang
+            scraper_dir = DB_PATH.parent.parent / "scraper"
+            subprocess.run(["python", "-m", "safar.collect.registry"], cwd=str(scraper_dir))
+        except Exception as e:
+            print(f"Scraper failed: {e}")
+            
+    # Start in a background thread
+    thread = threading.Thread(target=run_scraper)
+    thread.start()
+    
+    return {"status": "started", "message": "Pipeline sweep initiated"}
 
 if __name__ == "__main__":
     import uvicorn
