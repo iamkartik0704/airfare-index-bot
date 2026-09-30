@@ -1,0 +1,3722 @@
+{
+  "meta": {
+    "title": "CPI Airfare & Transport — eSankhyiki (MoSPI)",
+    "source": "eSankhyiki — Ministry of Statistics and Programme Implementation (MoSPI), Government of India",
+    "portal_url": "https://esankhyiki.mospi.gov.in/",
+    "api_url": "https://api.mospi.gov.in/api/cpi/getCPIData",
+    "retrieved_at": "2026-09-30T15:02:04.308365+00:00",
+    "purpose": "Official CPI series relevant to SAFAR (Problem Statement 26056): a real-time, fixed-basket, hedonic Airfare Price Index (APIx) to augment the CPI 'Airfare' item (COICOP 07.3.3.1.2.01). The CPI currently measures air travel monthly via manual collection; SAFAR automates daily collection and back-tests against this series.",
+    "fields": {
+      "index": "CPI index value (base year = 100). NOTE: index levels are NOT comparable across base years.",
+      "inflation_yoy_pct": "Year-on-year inflation % — comparable across base years.",
+      "period": "YYYY-MM reference period.",
+      "sector": "Rural / Urban / Combined (2024 base only).",
+      "imputation": "Whether the cell was imputed (Y/N) in the 2024 base.",
+      "status": "MoSPI release status flag (F = final) in legacy bases."
+    },
+    "coverage": {
+      "base_2024": "Latest CPI structure (COICOP 2018 aligned). Airfare item + parent class/division + all-items CPI, Rural/Urban/Combined, monthly (2025–present).",
+      "base_2012": "Historical airfare item, All-India, monthly (2014–2025).",
+      "base_2010": "Oldest airfare item, All-India, monthly (2011–2014)."
+    },
+    "attribution": "Data published by MoSPI via eSankhyiki. Reuse should preserve dataset name, indicator, value, unit, reference period and source.",
+    "notes": [
+      "The 2012-base airfare series has no observations for 2020-03, 2020-04 and 2020-05 — CPI field collection was suspended during the first COVID-19 lockdown and MoSPI did not release these months.",
+      "Index levels (base year = 100) are not comparable across the 2010/2012/2024 bases; only inflation_yoy_pct is directly comparable across bases."
+    ]
+  },
+  "hierarchy_2024": {
+    "division": "07 Transport",
+    "group": "24 Passenger transport services",
+    "class": "07.3.3 Passenger transport by air",
+    "sub_class": "07.3.3.1 Passenger transport by air, domestic",
+    "item": "07.3.3.1.2.01 Airfare"
+  },
+  "series": {
+    "airfare_item": [
+      {
+        "period": "2025-01",
+        "year": 2025,
+        "month": "January",
+        "sector": "Rural",
+        "index": 120.78,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-01",
+        "year": 2025,
+        "month": "January",
+        "sector": "Urban",
+        "index": 111.31,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-01",
+        "year": 2025,
+        "month": "January",
+        "sector": "Combined",
+        "index": 115.05,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-02",
+        "year": 2025,
+        "month": "February",
+        "sector": "Rural",
+        "index": 136.79,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-02",
+        "year": 2025,
+        "month": "February",
+        "sector": "Urban",
+        "index": 128.31,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-02",
+        "year": 2025,
+        "month": "February",
+        "sector": "Combined",
+        "index": 131.66,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-03",
+        "year": 2025,
+        "month": "March",
+        "sector": "Rural",
+        "index": 112.28,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-03",
+        "year": 2025,
+        "month": "March",
+        "sector": "Urban",
+        "index": 105.51,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-03",
+        "year": 2025,
+        "month": "March",
+        "sector": "Combined",
+        "index": 108.19,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-04",
+        "year": 2025,
+        "month": "April",
+        "sector": "Rural",
+        "index": 117.27,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-04",
+        "year": 2025,
+        "month": "April",
+        "sector": "Urban",
+        "index": 106.81,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-04",
+        "year": 2025,
+        "month": "April",
+        "sector": "Combined",
+        "index": 110.94,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-05",
+        "year": 2025,
+        "month": "May",
+        "sector": "Rural",
+        "index": 114.62,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-05",
+        "year": 2025,
+        "month": "May",
+        "sector": "Urban",
+        "index": 108.5,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-05",
+        "year": 2025,
+        "month": "May",
+        "sector": "Combined",
+        "index": 110.92,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-06",
+        "year": 2025,
+        "month": "June",
+        "sector": "Rural",
+        "index": 125.13,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-06",
+        "year": 2025,
+        "month": "June",
+        "sector": "Urban",
+        "index": 107.52,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-06",
+        "year": 2025,
+        "month": "June",
+        "sector": "Combined",
+        "index": 114.48,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-07",
+        "year": 2025,
+        "month": "July",
+        "sector": "Rural",
+        "index": 103.27,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-07",
+        "year": 2025,
+        "month": "July",
+        "sector": "Urban",
+        "index": 101.25,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-07",
+        "year": 2025,
+        "month": "July",
+        "sector": "Combined",
+        "index": 102.05,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-08",
+        "year": 2025,
+        "month": "August",
+        "sector": "Rural",
+        "index": 115.09,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-08",
+        "year": 2025,
+        "month": "August",
+        "sector": "Urban",
+        "index": 110.16,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-08",
+        "year": 2025,
+        "month": "August",
+        "sector": "Combined",
+        "index": 112.11,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-09",
+        "year": 2025,
+        "month": "September",
+        "sector": "Rural",
+        "index": 109.43,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-09",
+        "year": 2025,
+        "month": "September",
+        "sector": "Urban",
+        "index": 102.46,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-09",
+        "year": 2025,
+        "month": "September",
+        "sector": "Combined",
+        "index": 105.22,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-10",
+        "year": 2025,
+        "month": "October",
+        "sector": "Rural",
+        "index": 104.47,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-10",
+        "year": 2025,
+        "month": "October",
+        "sector": "Urban",
+        "index": 110.62,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-10",
+        "year": 2025,
+        "month": "October",
+        "sector": "Combined",
+        "index": 108.19,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-11",
+        "year": 2025,
+        "month": "November",
+        "sector": "Rural",
+        "index": 136.83,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-11",
+        "year": 2025,
+        "month": "November",
+        "sector": "Urban",
+        "index": 111.39,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-11",
+        "year": 2025,
+        "month": "November",
+        "sector": "Combined",
+        "index": 121.45,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-12",
+        "year": 2025,
+        "month": "December",
+        "sector": "Rural",
+        "index": 134.18,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-12",
+        "year": 2025,
+        "month": "December",
+        "sector": "Urban",
+        "index": 117.73,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2025-12",
+        "year": 2025,
+        "month": "December",
+        "sector": "Combined",
+        "index": 124.23,
+        "inflation_yoy_pct": null,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-01",
+        "year": 2026,
+        "month": "January",
+        "sector": "Rural",
+        "index": 134.8,
+        "inflation_yoy_pct": 11.61,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-01",
+        "year": 2026,
+        "month": "January",
+        "sector": "Urban",
+        "index": 114.8,
+        "inflation_yoy_pct": 3.13,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-01",
+        "year": 2026,
+        "month": "January",
+        "sector": "Combined",
+        "index": 122.71,
+        "inflation_yoy_pct": 6.65,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-02",
+        "year": 2026,
+        "month": "February",
+        "sector": "Rural",
+        "index": 130.76,
+        "inflation_yoy_pct": -4.41,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-02",
+        "year": 2026,
+        "month": "February",
+        "sector": "Urban",
+        "index": 116.99,
+        "inflation_yoy_pct": -8.82,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-02",
+        "year": 2026,
+        "month": "February",
+        "sector": "Combined",
+        "index": 122.43,
+        "inflation_yoy_pct": -7.01,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-03",
+        "year": 2026,
+        "month": "March",
+        "sector": "Rural",
+        "index": 135.84,
+        "inflation_yoy_pct": 20.98,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-03",
+        "year": 2026,
+        "month": "March",
+        "sector": "Urban",
+        "index": 115.52,
+        "inflation_yoy_pct": 9.48,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-03",
+        "year": 2026,
+        "month": "March",
+        "sector": "Combined",
+        "index": 123.55,
+        "inflation_yoy_pct": 14.2,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-04",
+        "year": 2026,
+        "month": "April",
+        "sector": "Rural",
+        "index": 132.86,
+        "inflation_yoy_pct": 13.29,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-04",
+        "year": 2026,
+        "month": "April",
+        "sector": "Urban",
+        "index": 117.01,
+        "inflation_yoy_pct": 9.55,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-04",
+        "year": 2026,
+        "month": "April",
+        "sector": "Combined",
+        "index": 123.27,
+        "inflation_yoy_pct": 11.11,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-05",
+        "year": 2026,
+        "month": "May",
+        "sector": "Rural",
+        "index": 135.29,
+        "inflation_yoy_pct": 18.04,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-05",
+        "year": 2026,
+        "month": "May",
+        "sector": "Urban",
+        "index": 122.61,
+        "inflation_yoy_pct": 13.01,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-05",
+        "year": 2026,
+        "month": "May",
+        "sector": "Combined",
+        "index": 127.62,
+        "inflation_yoy_pct": 15.06,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-06",
+        "year": 2026,
+        "month": "June",
+        "sector": "Rural",
+        "index": 134.56,
+        "inflation_yoy_pct": 7.54,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-06",
+        "year": 2026,
+        "month": "June",
+        "sector": "Urban",
+        "index": 120.55,
+        "inflation_yoy_pct": 12.12,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-06",
+        "year": 2026,
+        "month": "June",
+        "sector": "Combined",
+        "index": 126.09,
+        "inflation_yoy_pct": 10.14,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-07",
+        "year": 2026,
+        "month": "July",
+        "sector": "Rural",
+        "index": 134.43,
+        "inflation_yoy_pct": 30.18,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-07",
+        "year": 2026,
+        "month": "July",
+        "sector": "Urban",
+        "index": 119.6,
+        "inflation_yoy_pct": 18.12,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-07",
+        "year": 2026,
+        "month": "July",
+        "sector": "Combined",
+        "index": 125.46,
+        "inflation_yoy_pct": 22.94,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-08",
+        "year": 2026,
+        "month": "August",
+        "sector": "Rural",
+        "index": 148.16,
+        "inflation_yoy_pct": 28.74,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-08",
+        "year": 2026,
+        "month": "August",
+        "sector": "Urban",
+        "index": 127.2,
+        "inflation_yoy_pct": 15.47,
+        "imputation": "N"
+      },
+      {
+        "period": "2026-08",
+        "year": 2026,
+        "month": "August",
+        "sector": "Combined",
+        "index": 135.49,
+        "inflation_yoy_pct": 20.85,
+        "imputation": "N"
+      }
+    ],
+    "passenger_transport_by_air": [
+      {
+        "period": "2025-01",
+        "year": 2025,
+        "month": "January",
+        "sector": "Rural",
+        "index": 120.78,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-01",
+        "year": 2025,
+        "month": "January",
+        "sector": "Urban",
+        "index": 111.31,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-01",
+        "year": 2025,
+        "month": "January",
+        "sector": "Combined",
+        "index": 115.05,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-02",
+        "year": 2025,
+        "month": "February",
+        "sector": "Rural",
+        "index": 136.79,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-02",
+        "year": 2025,
+        "month": "February",
+        "sector": "Urban",
+        "index": 128.31,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-02",
+        "year": 2025,
+        "month": "February",
+        "sector": "Combined",
+        "index": 131.66,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-03",
+        "year": 2025,
+        "month": "March",
+        "sector": "Rural",
+        "index": 112.28,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-03",
+        "year": 2025,
+        "month": "March",
+        "sector": "Urban",
+        "index": 105.51,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-03",
+        "year": 2025,
+        "month": "March",
+        "sector": "Combined",
+        "index": 108.19,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-04",
+        "year": 2025,
+        "month": "April",
+        "sector": "Rural",
+        "index": 117.27,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-04",
+        "year": 2025,
+        "month": "April",
+        "sector": "Urban",
+        "index": 106.81,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-04",
+        "year": 2025,
+        "month": "April",
+        "sector": "Combined",
+        "index": 110.94,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-05",
+        "year": 2025,
+        "month": "May",
+        "sector": "Rural",
+        "index": 114.62,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-05",
+        "year": 2025,
+        "month": "May",
+        "sector": "Urban",
+        "index": 108.5,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-05",
+        "year": 2025,
+        "month": "May",
+        "sector": "Combined",
+        "index": 110.92,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-06",
+        "year": 2025,
+        "month": "June",
+        "sector": "Rural",
+        "index": 125.13,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-06",
+        "year": 2025,
+        "month": "June",
+        "sector": "Urban",
+        "index": 107.52,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-06",
+        "year": 2025,
+        "month": "June",
+        "sector": "Combined",
+        "index": 114.48,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-07",
+        "year": 2025,
+        "month": "July",
+        "sector": "Rural",
+        "index": 103.27,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-07",
+        "year": 2025,
+        "month": "July",
+        "sector": "Urban",
+        "index": 101.25,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-07",
+        "year": 2025,
+        "month": "July",
+        "sector": "Combined",
+        "index": 102.05,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-08",
+        "year": 2025,
+        "month": "August",
+        "sector": "Rural",
+        "index": 115.09,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-08",
+        "year": 2025,
+        "month": "August",
+        "sector": "Urban",
+        "index": 110.16,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-08",
+        "year": 2025,
+        "month": "August",
+        "sector": "Combined",
+        "index": 112.11,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-09",
+        "year": 2025,
+        "month": "September",
+        "sector": "Rural",
+        "index": 109.43,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-09",
+        "year": 2025,
+        "month": "September",
+        "sector": "Urban",
+        "index": 102.46,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-09",
+        "year": 2025,
+        "month": "September",
+        "sector": "Combined",
+        "index": 105.22,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-10",
+        "year": 2025,
+        "month": "October",
+        "sector": "Rural",
+        "index": 104.47,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-10",
+        "year": 2025,
+        "month": "October",
+        "sector": "Urban",
+        "index": 110.62,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-10",
+        "year": 2025,
+        "month": "October",
+        "sector": "Combined",
+        "index": 108.19,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-11",
+        "year": 2025,
+        "month": "November",
+        "sector": "Rural",
+        "index": 136.83,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-11",
+        "year": 2025,
+        "month": "November",
+        "sector": "Urban",
+        "index": 111.39,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-11",
+        "year": 2025,
+        "month": "November",
+        "sector": "Combined",
+        "index": 121.45,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-12",
+        "year": 2025,
+        "month": "December",
+        "sector": "Rural",
+        "index": 134.18,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-12",
+        "year": 2025,
+        "month": "December",
+        "sector": "Urban",
+        "index": 117.73,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-12",
+        "year": 2025,
+        "month": "December",
+        "sector": "Combined",
+        "index": 124.23,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2026-01",
+        "year": 2026,
+        "month": "January",
+        "sector": "Rural",
+        "index": 134.8,
+        "inflation_yoy_pct": 11.61,
+        "imputation": null
+      },
+      {
+        "period": "2026-01",
+        "year": 2026,
+        "month": "January",
+        "sector": "Urban",
+        "index": 114.8,
+        "inflation_yoy_pct": 3.13,
+        "imputation": null
+      },
+      {
+        "period": "2026-01",
+        "year": 2026,
+        "month": "January",
+        "sector": "Combined",
+        "index": 122.71,
+        "inflation_yoy_pct": 6.65,
+        "imputation": null
+      },
+      {
+        "period": "2026-02",
+        "year": 2026,
+        "month": "February",
+        "sector": "Rural",
+        "index": 130.76,
+        "inflation_yoy_pct": -4.41,
+        "imputation": null
+      },
+      {
+        "period": "2026-02",
+        "year": 2026,
+        "month": "February",
+        "sector": "Urban",
+        "index": 116.99,
+        "inflation_yoy_pct": -8.82,
+        "imputation": null
+      },
+      {
+        "period": "2026-02",
+        "year": 2026,
+        "month": "February",
+        "sector": "Combined",
+        "index": 122.43,
+        "inflation_yoy_pct": -7.01,
+        "imputation": null
+      },
+      {
+        "period": "2026-03",
+        "year": 2026,
+        "month": "March",
+        "sector": "Rural",
+        "index": 135.84,
+        "inflation_yoy_pct": 20.98,
+        "imputation": null
+      },
+      {
+        "period": "2026-03",
+        "year": 2026,
+        "month": "March",
+        "sector": "Urban",
+        "index": 115.52,
+        "inflation_yoy_pct": 9.48,
+        "imputation": null
+      },
+      {
+        "period": "2026-03",
+        "year": 2026,
+        "month": "March",
+        "sector": "Combined",
+        "index": 123.55,
+        "inflation_yoy_pct": 14.2,
+        "imputation": null
+      },
+      {
+        "period": "2026-04",
+        "year": 2026,
+        "month": "April",
+        "sector": "Rural",
+        "index": 132.86,
+        "inflation_yoy_pct": 13.29,
+        "imputation": null
+      },
+      {
+        "period": "2026-04",
+        "year": 2026,
+        "month": "April",
+        "sector": "Urban",
+        "index": 117.01,
+        "inflation_yoy_pct": 9.55,
+        "imputation": null
+      },
+      {
+        "period": "2026-04",
+        "year": 2026,
+        "month": "April",
+        "sector": "Combined",
+        "index": 123.27,
+        "inflation_yoy_pct": 11.11,
+        "imputation": null
+      },
+      {
+        "period": "2026-05",
+        "year": 2026,
+        "month": "May",
+        "sector": "Rural",
+        "index": 135.29,
+        "inflation_yoy_pct": 18.04,
+        "imputation": null
+      },
+      {
+        "period": "2026-05",
+        "year": 2026,
+        "month": "May",
+        "sector": "Urban",
+        "index": 122.61,
+        "inflation_yoy_pct": 13.01,
+        "imputation": null
+      },
+      {
+        "period": "2026-05",
+        "year": 2026,
+        "month": "May",
+        "sector": "Combined",
+        "index": 127.62,
+        "inflation_yoy_pct": 15.06,
+        "imputation": null
+      },
+      {
+        "period": "2026-06",
+        "year": 2026,
+        "month": "June",
+        "sector": "Rural",
+        "index": 134.56,
+        "inflation_yoy_pct": 7.54,
+        "imputation": null
+      },
+      {
+        "period": "2026-06",
+        "year": 2026,
+        "month": "June",
+        "sector": "Urban",
+        "index": 120.55,
+        "inflation_yoy_pct": 12.12,
+        "imputation": null
+      },
+      {
+        "period": "2026-06",
+        "year": 2026,
+        "month": "June",
+        "sector": "Combined",
+        "index": 126.09,
+        "inflation_yoy_pct": 10.14,
+        "imputation": null
+      },
+      {
+        "period": "2026-07",
+        "year": 2026,
+        "month": "July",
+        "sector": "Rural",
+        "index": 134.43,
+        "inflation_yoy_pct": 30.18,
+        "imputation": null
+      },
+      {
+        "period": "2026-07",
+        "year": 2026,
+        "month": "July",
+        "sector": "Urban",
+        "index": 119.6,
+        "inflation_yoy_pct": 18.12,
+        "imputation": null
+      },
+      {
+        "period": "2026-07",
+        "year": 2026,
+        "month": "July",
+        "sector": "Combined",
+        "index": 125.46,
+        "inflation_yoy_pct": 22.94,
+        "imputation": null
+      },
+      {
+        "period": "2026-08",
+        "year": 2026,
+        "month": "August",
+        "sector": "Rural",
+        "index": 148.16,
+        "inflation_yoy_pct": 28.74,
+        "imputation": null
+      },
+      {
+        "period": "2026-08",
+        "year": 2026,
+        "month": "August",
+        "sector": "Urban",
+        "index": 127.2,
+        "inflation_yoy_pct": 15.47,
+        "imputation": null
+      },
+      {
+        "period": "2026-08",
+        "year": 2026,
+        "month": "August",
+        "sector": "Combined",
+        "index": 135.49,
+        "inflation_yoy_pct": 20.85,
+        "imputation": null
+      }
+    ],
+    "transport_division": [
+      {
+        "period": "2025-01",
+        "year": 2025,
+        "month": "January",
+        "sector": "Rural",
+        "index": 100.55,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-01",
+        "year": 2025,
+        "month": "January",
+        "sector": "Urban",
+        "index": 100.55,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-01",
+        "year": 2025,
+        "month": "January",
+        "sector": "Combined",
+        "index": 100.55,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-02",
+        "year": 2025,
+        "month": "February",
+        "sector": "Rural",
+        "index": 100.75,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-02",
+        "year": 2025,
+        "month": "February",
+        "sector": "Urban",
+        "index": 100.73,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-02",
+        "year": 2025,
+        "month": "February",
+        "sector": "Combined",
+        "index": 100.74,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-03",
+        "year": 2025,
+        "month": "March",
+        "sector": "Rural",
+        "index": 100.75,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-03",
+        "year": 2025,
+        "month": "March",
+        "sector": "Urban",
+        "index": 100.7,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-03",
+        "year": 2025,
+        "month": "March",
+        "sector": "Combined",
+        "index": 100.73,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-04",
+        "year": 2025,
+        "month": "April",
+        "sector": "Rural",
+        "index": 100.87,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-04",
+        "year": 2025,
+        "month": "April",
+        "sector": "Urban",
+        "index": 100.83,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-04",
+        "year": 2025,
+        "month": "April",
+        "sector": "Combined",
+        "index": 100.85,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-05",
+        "year": 2025,
+        "month": "May",
+        "sector": "Rural",
+        "index": 100.98,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-05",
+        "year": 2025,
+        "month": "May",
+        "sector": "Urban",
+        "index": 100.94,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-05",
+        "year": 2025,
+        "month": "May",
+        "sector": "Combined",
+        "index": 100.96,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-06",
+        "year": 2025,
+        "month": "June",
+        "sector": "Rural",
+        "index": 101.12,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-06",
+        "year": 2025,
+        "month": "June",
+        "sector": "Urban",
+        "index": 101.05,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-06",
+        "year": 2025,
+        "month": "June",
+        "sector": "Combined",
+        "index": 101.09,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-07",
+        "year": 2025,
+        "month": "July",
+        "sector": "Rural",
+        "index": 101.19,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-07",
+        "year": 2025,
+        "month": "July",
+        "sector": "Urban",
+        "index": 101.09,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-07",
+        "year": 2025,
+        "month": "July",
+        "sector": "Combined",
+        "index": 101.14,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-08",
+        "year": 2025,
+        "month": "August",
+        "sector": "Rural",
+        "index": 101.29,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-08",
+        "year": 2025,
+        "month": "August",
+        "sector": "Urban",
+        "index": 101.19,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-08",
+        "year": 2025,
+        "month": "August",
+        "sector": "Combined",
+        "index": 101.24,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-09",
+        "year": 2025,
+        "month": "September",
+        "sector": "Rural",
+        "index": 101.13,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-09",
+        "year": 2025,
+        "month": "September",
+        "sector": "Urban",
+        "index": 100.97,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-09",
+        "year": 2025,
+        "month": "September",
+        "sector": "Combined",
+        "index": 101.06,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-10",
+        "year": 2025,
+        "month": "October",
+        "sector": "Rural",
+        "index": 100.5,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-10",
+        "year": 2025,
+        "month": "October",
+        "sector": "Urban",
+        "index": 100.37,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-10",
+        "year": 2025,
+        "month": "October",
+        "sector": "Combined",
+        "index": 100.44,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-11",
+        "year": 2025,
+        "month": "November",
+        "sector": "Rural",
+        "index": 100.59,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-11",
+        "year": 2025,
+        "month": "November",
+        "sector": "Urban",
+        "index": 100.47,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-11",
+        "year": 2025,
+        "month": "November",
+        "sector": "Combined",
+        "index": 100.53,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-12",
+        "year": 2025,
+        "month": "December",
+        "sector": "Rural",
+        "index": 100.59,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-12",
+        "year": 2025,
+        "month": "December",
+        "sector": "Urban",
+        "index": 100.55,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-12",
+        "year": 2025,
+        "month": "December",
+        "sector": "Combined",
+        "index": 100.57,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2026-01",
+        "year": 2026,
+        "month": "January",
+        "sector": "Rural",
+        "index": 100.67,
+        "inflation_yoy_pct": 0.12,
+        "imputation": null
+      },
+      {
+        "period": "2026-01",
+        "year": 2026,
+        "month": "January",
+        "sector": "Urban",
+        "index": 100.6,
+        "inflation_yoy_pct": 0.05,
+        "imputation": null
+      },
+      {
+        "period": "2026-01",
+        "year": 2026,
+        "month": "January",
+        "sector": "Combined",
+        "index": 100.64,
+        "inflation_yoy_pct": 0.09,
+        "imputation": null
+      },
+      {
+        "period": "2026-02",
+        "year": 2026,
+        "month": "February",
+        "sector": "Rural",
+        "index": 100.7,
+        "inflation_yoy_pct": -0.05,
+        "imputation": null
+      },
+      {
+        "period": "2026-02",
+        "year": 2026,
+        "month": "February",
+        "sector": "Urban",
+        "index": 100.67,
+        "inflation_yoy_pct": -0.06,
+        "imputation": null
+      },
+      {
+        "period": "2026-02",
+        "year": 2026,
+        "month": "February",
+        "sector": "Combined",
+        "index": 100.69,
+        "inflation_yoy_pct": -0.05,
+        "imputation": null
+      },
+      {
+        "period": "2026-03",
+        "year": 2026,
+        "month": "March",
+        "sector": "Rural",
+        "index": 100.76,
+        "inflation_yoy_pct": 0.01,
+        "imputation": null
+      },
+      {
+        "period": "2026-03",
+        "year": 2026,
+        "month": "March",
+        "sector": "Urban",
+        "index": 100.69,
+        "inflation_yoy_pct": -0.01,
+        "imputation": null
+      },
+      {
+        "period": "2026-03",
+        "year": 2026,
+        "month": "March",
+        "sector": "Combined",
+        "index": 100.73,
+        "inflation_yoy_pct": 0.0,
+        "imputation": null
+      },
+      {
+        "period": "2026-04",
+        "year": 2026,
+        "month": "April",
+        "sector": "Rural",
+        "index": 100.89,
+        "inflation_yoy_pct": 0.02,
+        "imputation": null
+      },
+      {
+        "period": "2026-04",
+        "year": 2026,
+        "month": "April",
+        "sector": "Urban",
+        "index": 100.79,
+        "inflation_yoy_pct": -0.04,
+        "imputation": null
+      },
+      {
+        "period": "2026-04",
+        "year": 2026,
+        "month": "April",
+        "sector": "Combined",
+        "index": 100.84,
+        "inflation_yoy_pct": -0.01,
+        "imputation": null
+      },
+      {
+        "period": "2026-05",
+        "year": 2026,
+        "month": "May",
+        "sector": "Rural",
+        "index": 102.8,
+        "inflation_yoy_pct": 1.81,
+        "imputation": null
+      },
+      {
+        "period": "2026-05",
+        "year": 2026,
+        "month": "May",
+        "sector": "Urban",
+        "index": 102.64,
+        "inflation_yoy_pct": 1.68,
+        "imputation": null
+      },
+      {
+        "period": "2026-05",
+        "year": 2026,
+        "month": "May",
+        "sector": "Combined",
+        "index": 102.73,
+        "inflation_yoy_pct": 1.75,
+        "imputation": null
+      },
+      {
+        "period": "2026-06",
+        "year": 2026,
+        "month": "June",
+        "sector": "Rural",
+        "index": 105.55,
+        "inflation_yoy_pct": 4.38,
+        "imputation": null
+      },
+      {
+        "period": "2026-06",
+        "year": 2026,
+        "month": "June",
+        "sector": "Urban",
+        "index": 105.33,
+        "inflation_yoy_pct": 4.24,
+        "imputation": null
+      },
+      {
+        "period": "2026-06",
+        "year": 2026,
+        "month": "June",
+        "sector": "Combined",
+        "index": 105.45,
+        "inflation_yoy_pct": 4.32,
+        "imputation": null
+      },
+      {
+        "period": "2026-07",
+        "year": 2026,
+        "month": "July",
+        "sector": "Rural",
+        "index": 105.73,
+        "inflation_yoy_pct": 4.49,
+        "imputation": null
+      },
+      {
+        "period": "2026-07",
+        "year": 2026,
+        "month": "July",
+        "sector": "Urban",
+        "index": 105.52,
+        "inflation_yoy_pct": 4.38,
+        "imputation": null
+      },
+      {
+        "period": "2026-07",
+        "year": 2026,
+        "month": "July",
+        "sector": "Combined",
+        "index": 105.64,
+        "inflation_yoy_pct": 4.44,
+        "imputation": null
+      },
+      {
+        "period": "2026-08",
+        "year": 2026,
+        "month": "August",
+        "sector": "Rural",
+        "index": 106.05,
+        "inflation_yoy_pct": 4.7,
+        "imputation": null
+      },
+      {
+        "period": "2026-08",
+        "year": 2026,
+        "month": "August",
+        "sector": "Urban",
+        "index": 105.73,
+        "inflation_yoy_pct": 4.49,
+        "imputation": null
+      },
+      {
+        "period": "2026-08",
+        "year": 2026,
+        "month": "August",
+        "sector": "Combined",
+        "index": 105.9,
+        "inflation_yoy_pct": 4.6,
+        "imputation": null
+      }
+    ],
+    "all_items_cpi_general": [
+      {
+        "period": "2025-01",
+        "year": 2025,
+        "month": "January",
+        "sector": "Rural",
+        "index": 101.81,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-01",
+        "year": 2025,
+        "month": "January",
+        "sector": "Urban",
+        "index": 101.49,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-01",
+        "year": 2025,
+        "month": "January",
+        "sector": "Combined",
+        "index": 101.67,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-02",
+        "year": 2025,
+        "month": "February",
+        "sector": "Rural",
+        "index": 101.33,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-02",
+        "year": 2025,
+        "month": "February",
+        "sector": "Urban",
+        "index": 101.3,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-02",
+        "year": 2025,
+        "month": "February",
+        "sector": "Combined",
+        "index": 101.32,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-03",
+        "year": 2025,
+        "month": "March",
+        "sector": "Rural",
+        "index": 101.34,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-03",
+        "year": 2025,
+        "month": "March",
+        "sector": "Urban",
+        "index": 101.47,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-03",
+        "year": 2025,
+        "month": "March",
+        "sector": "Combined",
+        "index": 101.39,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-04",
+        "year": 2025,
+        "month": "April",
+        "sector": "Rural",
+        "index": 101.49,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-04",
+        "year": 2025,
+        "month": "April",
+        "sector": "Urban",
+        "index": 101.71,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-04",
+        "year": 2025,
+        "month": "April",
+        "sector": "Combined",
+        "index": 101.58,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-05",
+        "year": 2025,
+        "month": "May",
+        "sector": "Rural",
+        "index": 101.78,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-05",
+        "year": 2025,
+        "month": "May",
+        "sector": "Urban",
+        "index": 102.06,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-05",
+        "year": 2025,
+        "month": "May",
+        "sector": "Combined",
+        "index": 101.9,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-06",
+        "year": 2025,
+        "month": "June",
+        "sector": "Rural",
+        "index": 102.39,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-06",
+        "year": 2025,
+        "month": "June",
+        "sector": "Urban",
+        "index": 102.66,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-06",
+        "year": 2025,
+        "month": "June",
+        "sector": "Combined",
+        "index": 102.51,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-07",
+        "year": 2025,
+        "month": "July",
+        "sector": "Rural",
+        "index": 103.34,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-07",
+        "year": 2025,
+        "month": "July",
+        "sector": "Urban",
+        "index": 103.36,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-07",
+        "year": 2025,
+        "month": "July",
+        "sector": "Combined",
+        "index": 103.35,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-08",
+        "year": 2025,
+        "month": "August",
+        "sector": "Rural",
+        "index": 103.84,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-08",
+        "year": 2025,
+        "month": "August",
+        "sector": "Urban",
+        "index": 103.6,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-08",
+        "year": 2025,
+        "month": "August",
+        "sector": "Combined",
+        "index": 103.74,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-09",
+        "year": 2025,
+        "month": "September",
+        "sector": "Rural",
+        "index": 103.8,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-09",
+        "year": 2025,
+        "month": "September",
+        "sector": "Urban",
+        "index": 103.66,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-09",
+        "year": 2025,
+        "month": "September",
+        "sector": "Combined",
+        "index": 103.74,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-10",
+        "year": 2025,
+        "month": "October",
+        "sector": "Rural",
+        "index": 103.85,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-10",
+        "year": 2025,
+        "month": "October",
+        "sector": "Urban",
+        "index": 103.61,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-10",
+        "year": 2025,
+        "month": "October",
+        "sector": "Combined",
+        "index": 103.74,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-11",
+        "year": 2025,
+        "month": "November",
+        "sector": "Rural",
+        "index": 104.16,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-11",
+        "year": 2025,
+        "month": "November",
+        "sector": "Urban",
+        "index": 103.83,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-11",
+        "year": 2025,
+        "month": "November",
+        "sector": "Combined",
+        "index": 104.01,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-12",
+        "year": 2025,
+        "month": "December",
+        "sector": "Rural",
+        "index": 104.19,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-12",
+        "year": 2025,
+        "month": "December",
+        "sector": "Urban",
+        "index": 103.98,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2025-12",
+        "year": 2025,
+        "month": "December",
+        "sector": "Combined",
+        "index": 104.1,
+        "inflation_yoy_pct": null,
+        "imputation": null
+      },
+      {
+        "period": "2026-01",
+        "year": 2026,
+        "month": "January",
+        "sector": "Rural",
+        "index": 104.59,
+        "inflation_yoy_pct": 2.73,
+        "imputation": null
+      },
+      {
+        "period": "2026-01",
+        "year": 2026,
+        "month": "January",
+        "sector": "Urban",
+        "index": 104.28,
+        "inflation_yoy_pct": 2.75,
+        "imputation": null
+      },
+      {
+        "period": "2026-01",
+        "year": 2026,
+        "month": "January",
+        "sector": "Combined",
+        "index": 104.45,
+        "inflation_yoy_pct": 2.74,
+        "imputation": null
+      },
+      {
+        "period": "2026-02",
+        "year": 2026,
+        "month": "February",
+        "sector": "Rural",
+        "index": 104.74,
+        "inflation_yoy_pct": 3.37,
+        "imputation": null
+      },
+      {
+        "period": "2026-02",
+        "year": 2026,
+        "month": "February",
+        "sector": "Urban",
+        "index": 104.36,
+        "inflation_yoy_pct": 3.02,
+        "imputation": null
+      },
+      {
+        "period": "2026-02",
+        "year": 2026,
+        "month": "February",
+        "sector": "Combined",
+        "index": 104.57,
+        "inflation_yoy_pct": 3.21,
+        "imputation": null
+      },
+      {
+        "period": "2026-03",
+        "year": 2026,
+        "month": "March",
+        "sector": "Rural",
+        "index": 105.02,
+        "inflation_yoy_pct": 3.63,
+        "imputation": null
+      },
+      {
+        "period": "2026-03",
+        "year": 2026,
+        "month": "March",
+        "sector": "Urban",
+        "index": 104.62,
+        "inflation_yoy_pct": 3.11,
+        "imputation": null
+      },
+      {
+        "period": "2026-03",
+        "year": 2026,
+        "month": "March",
+        "sector": "Combined",
+        "index": 104.84,
+        "inflation_yoy_pct": 3.4,
+        "imputation": null
+      },
+      {
+        "period": "2026-04",
+        "year": 2026,
+        "month": "April",
+        "sector": "Rural",
+        "index": 105.28,
+        "inflation_yoy_pct": 3.74,
+        "imputation": null
+      },
+      {
+        "period": "2026-04",
+        "year": 2026,
+        "month": "April",
+        "sector": "Urban",
+        "index": 104.92,
+        "inflation_yoy_pct": 3.16,
+        "imputation": null
+      },
+      {
+        "period": "2026-04",
+        "year": 2026,
+        "month": "April",
+        "sector": "Combined",
+        "index": 105.12,
+        "inflation_yoy_pct": 3.48,
+        "imputation": null
+      },
+      {
+        "period": "2026-05",
+        "year": 2026,
+        "month": "May",
+        "sector": "Rural",
+        "index": 106.11,
+        "inflation_yoy_pct": 4.25,
+        "imputation": null
+      },
+      {
+        "period": "2026-05",
+        "year": 2026,
+        "month": "May",
+        "sector": "Urban",
+        "index": 105.66,
+        "inflation_yoy_pct": 3.53,
+        "imputation": null
+      },
+      {
+        "period": "2026-05",
+        "year": 2026,
+        "month": "May",
+        "sector": "Combined",
+        "index": 105.91,
+        "inflation_yoy_pct": 3.93,
+        "imputation": null
+      },
+      {
+        "period": "2026-06",
+        "year": 2026,
+        "month": "June",
+        "sector": "Rural",
+        "index": 107.24,
+        "inflation_yoy_pct": 4.74,
+        "imputation": null
+      },
+      {
+        "period": "2026-06",
+        "year": 2026,
+        "month": "June",
+        "sector": "Urban",
+        "index": 106.69,
+        "inflation_yoy_pct": 3.93,
+        "imputation": null
+      },
+      {
+        "period": "2026-06",
+        "year": 2026,
+        "month": "June",
+        "sector": "Combined",
+        "index": 107.0,
+        "inflation_yoy_pct": 4.38,
+        "imputation": null
+      },
+      {
+        "period": "2026-07",
+        "year": 2026,
+        "month": "July",
+        "sector": "Rural",
+        "index": 108.34,
+        "inflation_yoy_pct": 4.84,
+        "imputation": null
+      },
+      {
+        "period": "2026-07",
+        "year": 2026,
+        "month": "July",
+        "sector": "Urban",
+        "index": 107.45,
+        "inflation_yoy_pct": 3.96,
+        "imputation": null
+      },
+      {
+        "period": "2026-07",
+        "year": 2026,
+        "month": "July",
+        "sector": "Combined",
+        "index": 107.95,
+        "inflation_yoy_pct": 4.45,
+        "imputation": null
+      },
+      {
+        "period": "2026-08",
+        "year": 2026,
+        "month": "August",
+        "sector": "Rural",
+        "index": 109.27,
+        "inflation_yoy_pct": 5.23,
+        "imputation": null
+      },
+      {
+        "period": "2026-08",
+        "year": 2026,
+        "month": "August",
+        "sector": "Urban",
+        "index": 108.07,
+        "inflation_yoy_pct": 4.31,
+        "imputation": null
+      },
+      {
+        "period": "2026-08",
+        "year": 2026,
+        "month": "August",
+        "sector": "Combined",
+        "index": 108.74,
+        "inflation_yoy_pct": 4.82,
+        "imputation": null
+      }
+    ],
+    "airfare_item_2012": [
+      {
+        "period": "2014-01",
+        "year": 2014,
+        "month": "January",
+        "index": 126.8,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-02",
+        "year": 2014,
+        "month": "February",
+        "index": 124.0,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-03",
+        "year": 2014,
+        "month": "March",
+        "index": 126.7,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-04",
+        "year": 2014,
+        "month": "April",
+        "index": 122.2,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-05",
+        "year": 2014,
+        "month": "May",
+        "index": 126.8,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-06",
+        "year": 2014,
+        "month": "June",
+        "index": 119.9,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-07",
+        "year": 2014,
+        "month": "July",
+        "index": 116.2,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-08",
+        "year": 2014,
+        "month": "August",
+        "index": 116.6,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-09",
+        "year": 2014,
+        "month": "September",
+        "index": 94.5,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-10",
+        "year": 2014,
+        "month": "October",
+        "index": 103.7,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-11",
+        "year": 2014,
+        "month": "November",
+        "index": 103.4,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-12",
+        "year": 2014,
+        "month": "December",
+        "index": 103.0,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2015-01",
+        "year": 2015,
+        "month": "January",
+        "index": 88.6,
+        "inflation_yoy_pct": -30.13,
+        "status": "F"
+      },
+      {
+        "period": "2015-02",
+        "year": 2015,
+        "month": "February",
+        "index": 89.3,
+        "inflation_yoy_pct": -27.98,
+        "status": "F"
+      },
+      {
+        "period": "2015-03",
+        "year": 2015,
+        "month": "March",
+        "index": 79.3,
+        "inflation_yoy_pct": -37.41,
+        "status": "F"
+      },
+      {
+        "period": "2015-04",
+        "year": 2015,
+        "month": "April",
+        "index": 84.5,
+        "inflation_yoy_pct": -30.85,
+        "status": "F"
+      },
+      {
+        "period": "2015-05",
+        "year": 2015,
+        "month": "May",
+        "index": 87.9,
+        "inflation_yoy_pct": -30.68,
+        "status": "F"
+      },
+      {
+        "period": "2015-06",
+        "year": 2015,
+        "month": "June",
+        "index": 78.1,
+        "inflation_yoy_pct": -34.86,
+        "status": "F"
+      },
+      {
+        "period": "2015-07",
+        "year": 2015,
+        "month": "July",
+        "index": 73.2,
+        "inflation_yoy_pct": -37.01,
+        "status": "F"
+      },
+      {
+        "period": "2015-08",
+        "year": 2015,
+        "month": "August",
+        "index": 72.6,
+        "inflation_yoy_pct": -37.74,
+        "status": "F"
+      },
+      {
+        "period": "2015-09",
+        "year": 2015,
+        "month": "September",
+        "index": 72.8,
+        "inflation_yoy_pct": -22.96,
+        "status": "F"
+      },
+      {
+        "period": "2015-10",
+        "year": 2015,
+        "month": "October",
+        "index": 73.3,
+        "inflation_yoy_pct": -29.32,
+        "status": "F"
+      },
+      {
+        "period": "2015-11",
+        "year": 2015,
+        "month": "November",
+        "index": 74.9,
+        "inflation_yoy_pct": -27.56,
+        "status": "F"
+      },
+      {
+        "period": "2015-12",
+        "year": 2015,
+        "month": "December",
+        "index": 77.1,
+        "inflation_yoy_pct": -25.15,
+        "status": "F"
+      },
+      {
+        "period": "2016-01",
+        "year": 2016,
+        "month": "January",
+        "index": 72.1,
+        "inflation_yoy_pct": -18.62,
+        "status": "F"
+      },
+      {
+        "period": "2016-02",
+        "year": 2016,
+        "month": "February",
+        "index": 69.7,
+        "inflation_yoy_pct": -21.95,
+        "status": "F"
+      },
+      {
+        "period": "2016-03",
+        "year": 2016,
+        "month": "March",
+        "index": 71.7,
+        "inflation_yoy_pct": -9.58,
+        "status": "F"
+      },
+      {
+        "period": "2016-04",
+        "year": 2016,
+        "month": "April",
+        "index": 76.0,
+        "inflation_yoy_pct": -10.06,
+        "status": "F"
+      },
+      {
+        "period": "2016-05",
+        "year": 2016,
+        "month": "May",
+        "index": 74.8,
+        "inflation_yoy_pct": -14.9,
+        "status": "F"
+      },
+      {
+        "period": "2016-06",
+        "year": 2016,
+        "month": "June",
+        "index": 77.0,
+        "inflation_yoy_pct": -1.41,
+        "status": "F"
+      },
+      {
+        "period": "2016-07",
+        "year": 2016,
+        "month": "July",
+        "index": 67.0,
+        "inflation_yoy_pct": -8.47,
+        "status": "F"
+      },
+      {
+        "period": "2016-08",
+        "year": 2016,
+        "month": "August",
+        "index": 64.8,
+        "inflation_yoy_pct": -10.74,
+        "status": "F"
+      },
+      {
+        "period": "2016-09",
+        "year": 2016,
+        "month": "September",
+        "index": 73.9,
+        "inflation_yoy_pct": 1.51,
+        "status": "F"
+      },
+      {
+        "period": "2016-10",
+        "year": 2016,
+        "month": "October",
+        "index": 77.4,
+        "inflation_yoy_pct": 5.59,
+        "status": "F"
+      },
+      {
+        "period": "2016-11",
+        "year": 2016,
+        "month": "November",
+        "index": 84.5,
+        "inflation_yoy_pct": 12.82,
+        "status": "F"
+      },
+      {
+        "period": "2016-12",
+        "year": 2016,
+        "month": "December",
+        "index": 88.0,
+        "inflation_yoy_pct": 14.14,
+        "status": "F"
+      },
+      {
+        "period": "2017-01",
+        "year": 2017,
+        "month": "January",
+        "index": 86.4,
+        "inflation_yoy_pct": 19.83,
+        "status": "F"
+      },
+      {
+        "period": "2017-02",
+        "year": 2017,
+        "month": "February",
+        "index": 95.3,
+        "inflation_yoy_pct": 36.73,
+        "status": "F"
+      },
+      {
+        "period": "2017-03",
+        "year": 2017,
+        "month": "March",
+        "index": 93.0,
+        "inflation_yoy_pct": 29.71,
+        "status": "F"
+      },
+      {
+        "period": "2017-04",
+        "year": 2017,
+        "month": "April",
+        "index": 94.2,
+        "inflation_yoy_pct": 23.95,
+        "status": "F"
+      },
+      {
+        "period": "2017-05",
+        "year": 2017,
+        "month": "May",
+        "index": 99.6,
+        "inflation_yoy_pct": 33.16,
+        "status": "F"
+      },
+      {
+        "period": "2017-06",
+        "year": 2017,
+        "month": "June",
+        "index": 87.3,
+        "inflation_yoy_pct": 13.38,
+        "status": "F"
+      },
+      {
+        "period": "2017-07",
+        "year": 2017,
+        "month": "July",
+        "index": 90.2,
+        "inflation_yoy_pct": 34.63,
+        "status": "F"
+      },
+      {
+        "period": "2017-08",
+        "year": 2017,
+        "month": "August",
+        "index": 90.4,
+        "inflation_yoy_pct": 39.51,
+        "status": "F"
+      },
+      {
+        "period": "2017-09",
+        "year": 2017,
+        "month": "September",
+        "index": 81.3,
+        "inflation_yoy_pct": 10.01,
+        "status": "F"
+      },
+      {
+        "period": "2017-10",
+        "year": 2017,
+        "month": "October",
+        "index": 76.9,
+        "inflation_yoy_pct": -0.65,
+        "status": "F"
+      },
+      {
+        "period": "2017-11",
+        "year": 2017,
+        "month": "November",
+        "index": 77.7,
+        "inflation_yoy_pct": -8.05,
+        "status": "F"
+      },
+      {
+        "period": "2017-12",
+        "year": 2017,
+        "month": "December",
+        "index": 75.7,
+        "inflation_yoy_pct": -13.98,
+        "status": "F"
+      },
+      {
+        "period": "2018-01",
+        "year": 2018,
+        "month": "January",
+        "index": 70.4,
+        "inflation_yoy_pct": -18.52,
+        "status": "F"
+      },
+      {
+        "period": "2018-02",
+        "year": 2018,
+        "month": "February",
+        "index": 74.0,
+        "inflation_yoy_pct": -22.35,
+        "status": "F"
+      },
+      {
+        "period": "2018-03",
+        "year": 2018,
+        "month": "March",
+        "index": 71.9,
+        "inflation_yoy_pct": -22.69,
+        "status": "F"
+      },
+      {
+        "period": "2018-04",
+        "year": 2018,
+        "month": "April",
+        "index": 78.8,
+        "inflation_yoy_pct": -16.35,
+        "status": "F"
+      },
+      {
+        "period": "2018-05",
+        "year": 2018,
+        "month": "May",
+        "index": 83.0,
+        "inflation_yoy_pct": -16.67,
+        "status": "F"
+      },
+      {
+        "period": "2018-06",
+        "year": 2018,
+        "month": "June",
+        "index": 81.5,
+        "inflation_yoy_pct": -6.64,
+        "status": "F"
+      },
+      {
+        "period": "2018-07",
+        "year": 2018,
+        "month": "July",
+        "index": 70.9,
+        "inflation_yoy_pct": -21.4,
+        "status": "F"
+      },
+      {
+        "period": "2018-08",
+        "year": 2018,
+        "month": "August",
+        "index": 64.5,
+        "inflation_yoy_pct": -28.65,
+        "status": "F"
+      },
+      {
+        "period": "2018-09",
+        "year": 2018,
+        "month": "September",
+        "index": 71.1,
+        "inflation_yoy_pct": -12.55,
+        "status": "F"
+      },
+      {
+        "period": "2018-10",
+        "year": 2018,
+        "month": "October",
+        "index": 82.4,
+        "inflation_yoy_pct": 7.15,
+        "status": "F"
+      },
+      {
+        "period": "2018-11",
+        "year": 2018,
+        "month": "November",
+        "index": 76.3,
+        "inflation_yoy_pct": -1.8,
+        "status": "F"
+      },
+      {
+        "period": "2018-12",
+        "year": 2018,
+        "month": "December",
+        "index": 79.5,
+        "inflation_yoy_pct": 5.02,
+        "status": "F"
+      },
+      {
+        "period": "2019-01",
+        "year": 2019,
+        "month": "January",
+        "index": 76.3,
+        "inflation_yoy_pct": 8.38,
+        "status": "F"
+      },
+      {
+        "period": "2019-02",
+        "year": 2019,
+        "month": "February",
+        "index": 75.1,
+        "inflation_yoy_pct": 1.49,
+        "status": "F"
+      },
+      {
+        "period": "2019-03",
+        "year": 2019,
+        "month": "March",
+        "index": 75.6,
+        "inflation_yoy_pct": 5.15,
+        "status": "F"
+      },
+      {
+        "period": "2019-04",
+        "year": 2019,
+        "month": "April",
+        "index": 78.0,
+        "inflation_yoy_pct": -1.02,
+        "status": "F"
+      },
+      {
+        "period": "2019-05",
+        "year": 2019,
+        "month": "May",
+        "index": 77.5,
+        "inflation_yoy_pct": -6.63,
+        "status": "F"
+      },
+      {
+        "period": "2019-06",
+        "year": 2019,
+        "month": "June",
+        "index": 71.9,
+        "inflation_yoy_pct": -11.78,
+        "status": "F"
+      },
+      {
+        "period": "2019-07",
+        "year": 2019,
+        "month": "July",
+        "index": 74.7,
+        "inflation_yoy_pct": 5.36,
+        "status": "F"
+      },
+      {
+        "period": "2019-08",
+        "year": 2019,
+        "month": "August",
+        "index": 73.2,
+        "inflation_yoy_pct": 13.49,
+        "status": "F"
+      },
+      {
+        "period": "2019-09",
+        "year": 2019,
+        "month": "September",
+        "index": 70.1,
+        "inflation_yoy_pct": -1.41,
+        "status": "F"
+      },
+      {
+        "period": "2019-10",
+        "year": 2019,
+        "month": "October",
+        "index": 69.8,
+        "inflation_yoy_pct": -15.29,
+        "status": "F"
+      },
+      {
+        "period": "2019-11",
+        "year": 2019,
+        "month": "November",
+        "index": 67.8,
+        "inflation_yoy_pct": -11.14,
+        "status": "F"
+      },
+      {
+        "period": "2019-12",
+        "year": 2019,
+        "month": "December",
+        "index": 71.9,
+        "inflation_yoy_pct": -9.56,
+        "status": "F"
+      },
+      {
+        "period": "2020-01",
+        "year": 2020,
+        "month": "January",
+        "index": 70.6,
+        "inflation_yoy_pct": -7.47,
+        "status": "F"
+      },
+      {
+        "period": "2020-02",
+        "year": 2020,
+        "month": "February",
+        "index": 70.0,
+        "inflation_yoy_pct": -6.79,
+        "status": "F"
+      },
+      {
+        "period": "2020-06",
+        "year": 2020,
+        "month": "June",
+        "index": 203.9,
+        "inflation_yoy_pct": 183.59,
+        "status": "F"
+      },
+      {
+        "period": "2020-07",
+        "year": 2020,
+        "month": "July",
+        "index": 162.5,
+        "inflation_yoy_pct": 117.54,
+        "status": "F"
+      },
+      {
+        "period": "2020-08",
+        "year": 2020,
+        "month": "August",
+        "index": 177.6,
+        "inflation_yoy_pct": 142.62,
+        "status": "F"
+      },
+      {
+        "period": "2020-09",
+        "year": 2020,
+        "month": "September",
+        "index": 169.4,
+        "inflation_yoy_pct": 141.65,
+        "status": "F"
+      },
+      {
+        "period": "2020-10",
+        "year": 2020,
+        "month": "October",
+        "index": 160.6,
+        "inflation_yoy_pct": 130.09,
+        "status": "F"
+      },
+      {
+        "period": "2020-11",
+        "year": 2020,
+        "month": "November",
+        "index": 156.0,
+        "inflation_yoy_pct": 130.09,
+        "status": "F"
+      },
+      {
+        "period": "2020-12",
+        "year": 2020,
+        "month": "December",
+        "index": 164.2,
+        "inflation_yoy_pct": 128.37,
+        "status": "F"
+      },
+      {
+        "period": "2021-01",
+        "year": 2021,
+        "month": "January",
+        "index": 170.7,
+        "inflation_yoy_pct": 141.78,
+        "status": "F"
+      },
+      {
+        "period": "2021-02",
+        "year": 2021,
+        "month": "February",
+        "index": 163.1,
+        "inflation_yoy_pct": 133.0,
+        "status": "F"
+      },
+      {
+        "period": "2021-03",
+        "year": 2021,
+        "month": "March",
+        "index": 161.1,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2021-04",
+        "year": 2021,
+        "month": "April",
+        "index": 177.2,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2021-05",
+        "year": 2021,
+        "month": "May",
+        "index": 182.5,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2021-06",
+        "year": 2021,
+        "month": "June",
+        "index": 205.8,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2021-07",
+        "year": 2021,
+        "month": "July",
+        "index": 207.2,
+        "inflation_yoy_pct": 27.51,
+        "status": "F"
+      },
+      {
+        "period": "2021-08",
+        "year": 2021,
+        "month": "August",
+        "index": 214.6,
+        "inflation_yoy_pct": 20.83,
+        "status": "F"
+      },
+      {
+        "period": "2021-09",
+        "year": 2021,
+        "month": "September",
+        "index": 224.3,
+        "inflation_yoy_pct": 32.41,
+        "status": "F"
+      },
+      {
+        "period": "2021-10",
+        "year": 2021,
+        "month": "October",
+        "index": 212.3,
+        "inflation_yoy_pct": 32.19,
+        "status": "F"
+      },
+      {
+        "period": "2021-11",
+        "year": 2021,
+        "month": "November",
+        "index": 208.3,
+        "inflation_yoy_pct": 33.53,
+        "status": "F"
+      },
+      {
+        "period": "2021-12",
+        "year": 2021,
+        "month": "December",
+        "index": 204.2,
+        "inflation_yoy_pct": 24.36,
+        "status": "F"
+      },
+      {
+        "period": "2022-01",
+        "year": 2022,
+        "month": "January",
+        "index": 209.1,
+        "inflation_yoy_pct": 22.5,
+        "status": "F"
+      },
+      {
+        "period": "2022-02",
+        "year": 2022,
+        "month": "February",
+        "index": 208.6,
+        "inflation_yoy_pct": 27.9,
+        "status": "F"
+      },
+      {
+        "period": "2022-03",
+        "year": 2022,
+        "month": "March",
+        "index": 204.3,
+        "inflation_yoy_pct": 26.82,
+        "status": "F"
+      },
+      {
+        "period": "2022-04",
+        "year": 2022,
+        "month": "April",
+        "index": 212.9,
+        "inflation_yoy_pct": 20.15,
+        "status": "F"
+      },
+      {
+        "period": "2022-05",
+        "year": 2022,
+        "month": "May",
+        "index": 217.4,
+        "inflation_yoy_pct": 19.12,
+        "status": "F"
+      },
+      {
+        "period": "2022-06",
+        "year": 2022,
+        "month": "June",
+        "index": 215.8,
+        "inflation_yoy_pct": 4.86,
+        "status": "F"
+      },
+      {
+        "period": "2022-07",
+        "year": 2022,
+        "month": "July",
+        "index": 219.9,
+        "inflation_yoy_pct": 6.13,
+        "status": "F"
+      },
+      {
+        "period": "2022-08",
+        "year": 2022,
+        "month": "August",
+        "index": 220.0,
+        "inflation_yoy_pct": 2.52,
+        "status": "F"
+      },
+      {
+        "period": "2022-09",
+        "year": 2022,
+        "month": "September",
+        "index": 225.8,
+        "inflation_yoy_pct": 0.67,
+        "status": "F"
+      },
+      {
+        "period": "2022-10",
+        "year": 2022,
+        "month": "October",
+        "index": 243.6,
+        "inflation_yoy_pct": 14.74,
+        "status": "F"
+      },
+      {
+        "period": "2022-11",
+        "year": 2022,
+        "month": "November",
+        "index": 234.8,
+        "inflation_yoy_pct": 12.72,
+        "status": "F"
+      },
+      {
+        "period": "2022-12",
+        "year": 2022,
+        "month": "December",
+        "index": 241.7,
+        "inflation_yoy_pct": 18.36,
+        "status": "F"
+      },
+      {
+        "period": "2023-01",
+        "year": 2023,
+        "month": "January",
+        "index": 232.0,
+        "inflation_yoy_pct": 10.95,
+        "status": "F"
+      },
+      {
+        "period": "2023-02",
+        "year": 2023,
+        "month": "February",
+        "index": 217.9,
+        "inflation_yoy_pct": 4.46,
+        "status": "F"
+      },
+      {
+        "period": "2023-03",
+        "year": 2023,
+        "month": "March",
+        "index": 206.3,
+        "inflation_yoy_pct": 0.98,
+        "status": "F"
+      },
+      {
+        "period": "2023-04",
+        "year": 2023,
+        "month": "April",
+        "index": 203.2,
+        "inflation_yoy_pct": -4.56,
+        "status": "F"
+      },
+      {
+        "period": "2023-05",
+        "year": 2023,
+        "month": "May",
+        "index": 205.5,
+        "inflation_yoy_pct": -5.47,
+        "status": "F"
+      },
+      {
+        "period": "2023-06",
+        "year": 2023,
+        "month": "June",
+        "index": 205.5,
+        "inflation_yoy_pct": -4.77,
+        "status": "F"
+      },
+      {
+        "period": "2023-07",
+        "year": 2023,
+        "month": "July",
+        "index": 206.0,
+        "inflation_yoy_pct": -6.32,
+        "status": "F"
+      },
+      {
+        "period": "2023-08",
+        "year": 2023,
+        "month": "August",
+        "index": 196.2,
+        "inflation_yoy_pct": -10.82,
+        "status": "F"
+      },
+      {
+        "period": "2023-09",
+        "year": 2023,
+        "month": "September",
+        "index": 191.0,
+        "inflation_yoy_pct": -15.41,
+        "status": "F"
+      },
+      {
+        "period": "2023-10",
+        "year": 2023,
+        "month": "October",
+        "index": 195.3,
+        "inflation_yoy_pct": -19.83,
+        "status": "F"
+      },
+      {
+        "period": "2023-11",
+        "year": 2023,
+        "month": "November",
+        "index": 198.3,
+        "inflation_yoy_pct": -15.55,
+        "status": "F"
+      },
+      {
+        "period": "2023-12",
+        "year": 2023,
+        "month": "December",
+        "index": 196.2,
+        "inflation_yoy_pct": -18.82,
+        "status": "F"
+      },
+      {
+        "period": "2024-01",
+        "year": 2024,
+        "month": "January",
+        "index": 196.0,
+        "inflation_yoy_pct": -15.52,
+        "status": "F"
+      },
+      {
+        "period": "2024-02",
+        "year": 2024,
+        "month": "February",
+        "index": 199.7,
+        "inflation_yoy_pct": -8.35,
+        "status": "F"
+      },
+      {
+        "period": "2024-03",
+        "year": 2024,
+        "month": "March",
+        "index": 197.6,
+        "inflation_yoy_pct": -4.22,
+        "status": "F"
+      },
+      {
+        "period": "2024-04",
+        "year": 2024,
+        "month": "April",
+        "index": 197.5,
+        "inflation_yoy_pct": -2.81,
+        "status": "F"
+      },
+      {
+        "period": "2024-05",
+        "year": 2024,
+        "month": "May",
+        "index": 197.9,
+        "inflation_yoy_pct": -3.7,
+        "status": "F"
+      },
+      {
+        "period": "2024-06",
+        "year": 2024,
+        "month": "June",
+        "index": 196.3,
+        "inflation_yoy_pct": -4.48,
+        "status": "F"
+      },
+      {
+        "period": "2024-07",
+        "year": 2024,
+        "month": "July",
+        "index": 196.1,
+        "inflation_yoy_pct": -4.81,
+        "status": "F"
+      },
+      {
+        "period": "2024-08",
+        "year": 2024,
+        "month": "August",
+        "index": 197.0,
+        "inflation_yoy_pct": 0.41,
+        "status": "F"
+      },
+      {
+        "period": "2024-09",
+        "year": 2024,
+        "month": "September",
+        "index": 196.5,
+        "inflation_yoy_pct": 2.88,
+        "status": "F"
+      },
+      {
+        "period": "2024-10",
+        "year": 2024,
+        "month": "October",
+        "index": 195.4,
+        "inflation_yoy_pct": 0.05,
+        "status": "F"
+      },
+      {
+        "period": "2024-11",
+        "year": 2024,
+        "month": "November",
+        "index": 198.5,
+        "inflation_yoy_pct": 0.1,
+        "status": "F"
+      },
+      {
+        "period": "2024-12",
+        "year": 2024,
+        "month": "December",
+        "index": 203.1,
+        "inflation_yoy_pct": 3.52,
+        "status": "F"
+      },
+      {
+        "period": "2025-01",
+        "year": 2025,
+        "month": "January",
+        "index": 202.3,
+        "inflation_yoy_pct": 3.21,
+        "status": "F"
+      },
+      {
+        "period": "2025-02",
+        "year": 2025,
+        "month": "February",
+        "index": 207.0,
+        "inflation_yoy_pct": 3.66,
+        "status": "F"
+      },
+      {
+        "period": "2025-03",
+        "year": 2025,
+        "month": "March",
+        "index": 211.5,
+        "inflation_yoy_pct": 7.03,
+        "status": "F"
+      },
+      {
+        "period": "2025-04",
+        "year": 2025,
+        "month": "April",
+        "index": 209.1,
+        "inflation_yoy_pct": 5.87,
+        "status": "F"
+      },
+      {
+        "period": "2025-05",
+        "year": 2025,
+        "month": "May",
+        "index": 214.3,
+        "inflation_yoy_pct": 8.29,
+        "status": "F"
+      },
+      {
+        "period": "2025-06",
+        "year": 2025,
+        "month": "June",
+        "index": 211.6,
+        "inflation_yoy_pct": 7.79,
+        "status": "F"
+      },
+      {
+        "period": "2025-07",
+        "year": 2025,
+        "month": "July",
+        "index": 202.3,
+        "inflation_yoy_pct": 3.16,
+        "status": "F"
+      },
+      {
+        "period": "2025-08",
+        "year": 2025,
+        "month": "August",
+        "index": 203.6,
+        "inflation_yoy_pct": 3.35,
+        "status": "F"
+      },
+      {
+        "period": "2025-09",
+        "year": 2025,
+        "month": "September",
+        "index": 205.1,
+        "inflation_yoy_pct": 4.38,
+        "status": "F"
+      },
+      {
+        "period": "2025-10",
+        "year": 2025,
+        "month": "October",
+        "index": 211.4,
+        "inflation_yoy_pct": 8.19,
+        "status": "F"
+      },
+      {
+        "period": "2025-11",
+        "year": 2025,
+        "month": "November",
+        "index": 215.5,
+        "inflation_yoy_pct": 8.56,
+        "status": "F"
+      },
+      {
+        "period": "2025-12",
+        "year": 2025,
+        "month": "December",
+        "index": 206.3,
+        "inflation_yoy_pct": 1.58,
+        "status": "F"
+      }
+    ],
+    "airfare_item_2010": [
+      {
+        "period": "2011-01",
+        "year": 2011,
+        "month": "January",
+        "index": 105.6,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2011-02",
+        "year": 2011,
+        "month": "February",
+        "index": 109.4,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2011-03",
+        "year": 2011,
+        "month": "March",
+        "index": 110.0,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2011-04",
+        "year": 2011,
+        "month": "April",
+        "index": 108.0,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2011-05",
+        "year": 2011,
+        "month": "May",
+        "index": 110.5,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2011-06",
+        "year": 2011,
+        "month": "June",
+        "index": 107.4,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2011-07",
+        "year": 2011,
+        "month": "July",
+        "index": 106.7,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2011-08",
+        "year": 2011,
+        "month": "August",
+        "index": 108.1,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2011-09",
+        "year": 2011,
+        "month": "September",
+        "index": 108.1,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2011-10",
+        "year": 2011,
+        "month": "October",
+        "index": 111.7,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2011-11",
+        "year": 2011,
+        "month": "November",
+        "index": 120.3,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2011-12",
+        "year": 2011,
+        "month": "December",
+        "index": 124.1,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2012-01",
+        "year": 2012,
+        "month": "January",
+        "index": 123.3,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2012-02",
+        "year": 2012,
+        "month": "February",
+        "index": 119.7,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2012-03",
+        "year": 2012,
+        "month": "March",
+        "index": 123.3,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2012-04",
+        "year": 2012,
+        "month": "April",
+        "index": 119.8,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2012-05",
+        "year": 2012,
+        "month": "May",
+        "index": 118.5,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2012-06",
+        "year": 2012,
+        "month": "June",
+        "index": 120.4,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2012-07",
+        "year": 2012,
+        "month": "July",
+        "index": 118.6,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2012-08",
+        "year": 2012,
+        "month": "August",
+        "index": 116.1,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2012-09",
+        "year": 2012,
+        "month": "September",
+        "index": 117.4,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2012-10",
+        "year": 2012,
+        "month": "October",
+        "index": 123.1,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2012-11",
+        "year": 2012,
+        "month": "November",
+        "index": 123.8,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2012-12",
+        "year": 2012,
+        "month": "December",
+        "index": 125.8,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2013-01",
+        "year": 2013,
+        "month": "January",
+        "index": 119.3,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2013-02",
+        "year": 2013,
+        "month": "February",
+        "index": 124.9,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2013-03",
+        "year": 2013,
+        "month": "March",
+        "index": 127.1,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2013-04",
+        "year": 2013,
+        "month": "April",
+        "index": 125.7,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2013-05",
+        "year": 2013,
+        "month": "May",
+        "index": 127.3,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2013-06",
+        "year": 2013,
+        "month": "June",
+        "index": 133.0,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2013-07",
+        "year": 2013,
+        "month": "July",
+        "index": 120.7,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2013-08",
+        "year": 2013,
+        "month": "August",
+        "index": 120.2,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2013-09",
+        "year": 2013,
+        "month": "September",
+        "index": 124.6,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2013-10",
+        "year": 2013,
+        "month": "October",
+        "index": 127.8,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2013-11",
+        "year": 2013,
+        "month": "November",
+        "index": 133.5,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2013-12",
+        "year": 2013,
+        "month": "December",
+        "index": 132.7,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-01",
+        "year": 2014,
+        "month": "January",
+        "index": 127.0,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-02",
+        "year": 2014,
+        "month": "February",
+        "index": 121.4,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-03",
+        "year": 2014,
+        "month": "March",
+        "index": 120.0,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-04",
+        "year": 2014,
+        "month": "April",
+        "index": 119.7,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-05",
+        "year": 2014,
+        "month": "May",
+        "index": 122.2,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-06",
+        "year": 2014,
+        "month": "June",
+        "index": 130.2,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-07",
+        "year": 2014,
+        "month": "July",
+        "index": 132.7,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-08",
+        "year": 2014,
+        "month": "August",
+        "index": 132.5,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-09",
+        "year": 2014,
+        "month": "September",
+        "index": 134.6,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-10",
+        "year": 2014,
+        "month": "October",
+        "index": 137.2,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-11",
+        "year": 2014,
+        "month": "November",
+        "index": 134.5,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      },
+      {
+        "period": "2014-12",
+        "year": 2014,
+        "month": "December",
+        "index": 133.9,
+        "inflation_yoy_pct": null,
+        "status": "F"
+      }
+    ]
+  },
+  "errors": {}
+}
