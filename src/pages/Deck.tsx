@@ -217,7 +217,7 @@ export default function Deck() {
     </Slide>,
 
     <Slide n={7} total={12} kicker="Live index" title="400 days of daily APIx">
-      <div className="absolute right-8 top-8"><Tag tone="red">Simulated data</Tag></div>
+      <div className="mb-3"><Tag tone="red">Simulated data</Tag></div>
       <IndexArea data={daily} height={300} />
       <div className="mt-2 flex flex-wrap gap-2">
         <Tag tone="blue">Today {headline.index.toFixed(2)}</Tag>
@@ -227,7 +227,7 @@ export default function Deck() {
     </Slide>,
 
     <Slide n={8} total={12} kicker="Monthly release" title="The series an NSO would print">
-      <div className="absolute right-8 top-8"><Tag tone="red">Simulated data</Tag></div>
+      <div className="mb-3"><Tag tone="red">Simulated data</Tag></div>
       <PeriodLine data={monthly.slice(-18)} height={290} />
       <div className="mt-3 grid gap-2 sm:grid-cols-3">
         {monthly.slice(-3).map((m) => (

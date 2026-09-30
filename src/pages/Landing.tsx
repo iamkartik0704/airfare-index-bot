@@ -70,7 +70,7 @@ export default function Landing() {
             <Tag tone="ink">Real-time airfare price index for India</Tag>
             <Tag tone="red">Built to augment the CPI</Tag>
           </div>
-          <h1 className="neo-display mt-5 text-5xl leading-[0.9] md:text-8xl">
+          <h1 className="neo-display mt-5 text-4xl leading-[0.95] sm:text-6xl md:text-8xl">
             The price of a flight,
             <br />
             <span className="bg-[#ffd400] px-2">measured</span>{" "}
