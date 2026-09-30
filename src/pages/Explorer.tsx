@@ -1,6 +1,6 @@
 import { useApi } from "@/hooks/useApi";
 import { useState } from "react";
-import { Bar, Delta, KeyVal, Label, Loading, Panel, Stat, Table, TD, TR, Tag } from "@/components/neo";
+import { Bar, Delta, KeyVal, Label, Loading, Panel, Stat, Table, TD, TR, Tag, Btn } from "@/components/neo";
 
 export default function Explorer() {
   const [routeId, setRouteId] = useState("DEL-BOM");
@@ -180,7 +180,18 @@ export default function Explorer() {
           </Table>
         </Panel>
 
-        <Panel kicker="After" title="Clean, typed and decomposed">
+        <Panel kicker="After" title="Clean, typed and decomposed" right={
+          <Btn tone="ink" className="px-2 py-1 text-[10px] uppercase font-bold" onClick={() => {
+            const csv = ["ID,Source,Carrier,Class,Base,Taxes,Fee,Total,Quality,Flags"];
+            ex.cleanedSample.forEach((q: any) => csv.push(`${q.id},${q.sourceId},${q.carrier},${q.fareClass},${q.baseFare},${q.taxes},${q.convenienceFee || 0},${q.totalFare},${q.quality.toFixed(2)},"${q.flags.join(", ")}"`));
+            const blob = new Blob([csv.join("\n")], { type: "text/csv" });
+            const url = window.URL.createObjectURL(blob);
+            const a = document.createElement("a");
+            a.href = url;
+            a.download = `safar_cleaned_${ex.route.origin}_${ex.route.destination}.csv`;
+            a.click();
+          }}>Export CSV</Btn>
+        }>
           <Table head={["Source", "Carrier", "Class", "Base", "Taxes", "Fee", "Total", "Quality", "Flags"]}>
             {ex.cleanedSample.slice(0, 12).map((q) => (
               <TR key={q.id} className={q.imputed ? "opacity-60" : ""}>

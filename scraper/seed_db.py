@@ -42,13 +42,38 @@ def seed():
         # 2. Seed index_points for 400 days
         for i in range(400):
             d = today - timedelta(days=400 - i - 1)
-            # Simulate some inflation and seasonality
-            val = 100 + (i * 0.05) + math.sin(i / 10.0) * 5
+            
+            # Base trend
+            trend = 100 + (i * 0.03) 
+            
+            # Real seasonal patterns (approximations)
+            month = d.month
+            day = d.day
+            
+            seasonality = 0
+            # Summer travel spike (May-June)
+            if month in [5, 6]:
+                seasonality = 8.0
+            # Diwali/Festive spike (Late Oct-Nov)
+            elif month == 11 or (month == 10 and day > 15):
+                seasonality = 15.0
+            # Winter holidays (Late Dec)
+            elif month == 12 and day > 15:
+                seasonality = 12.0
+            # Off-season drop (Feb-Mar, Jul-Sep)
+            elif month in [2, 3, 7, 8, 9]:
+                seasonality = -5.0
+                
+            # Random noise (volatility)
+            import random
+            noise = random.uniform(-2.5, 2.5)
+                
+            val = trend + seasonality + noise
             con.execute("""
                 INSERT INTO index_points (
                     date, value, nominal, quality_index, hedge_ratio, avg_fare, observations, is_synthetic
                 ) VALUES (?, ?, ?, 1.0, 1.0, ?, 120, true)
-            """, (d.isoformat(), val, val, 4500 + (val * 10)))
+            """, (d.isoformat(), val, val + random.uniform(-1, 1), 4500 + (val * 12)))
             
     print("Database seeded with mock data.")
 

@@ -1,6 +1,6 @@
 import { useApi } from "@/hooks/useApi";
 import { BacktestScatter, PeriodLine } from "@/components/charts";
-import { Delta, KeyVal, Label, Loading, Panel, Stat, Table, TD, TR, Tag } from "@/components/neo";
+import { Delta, KeyVal, Label, Loading, Panel, Stat, Table, TD, TR, Tag, Btn } from "@/components/neo";
 
 export default function Validation() {
   const v = useApi("validation");
@@ -64,7 +64,18 @@ export default function Validation() {
         </Panel>
       </div>
 
-      <Panel kicker="Table" title="SAFAR vs DGCA, month by month">
+      <Panel kicker="Table" title="SAFAR vs DGCA, month by month" right={
+        <Btn tone="ink" className="px-2 py-1 text-[10px] uppercase font-bold" onClick={() => {
+          const csv = ["Month,SAFAR APIx,DGCA index,SAFAR fare,DGCA fare,Gap"];
+          v.months.forEach((m: any) => csv.push(`${m.period},${m.api.toFixed(2)},${m.dgca.toFixed(2)},${m.apiFare},${m.dgcaFare},${m.diff.toFixed(2)}`));
+          const blob = new Blob([csv.join("\n")], { type: "text/csv" });
+          const url = window.URL.createObjectURL(blob);
+          const a = document.createElement("a");
+          a.href = url;
+          a.download = "safar_vs_dgca_backtest.csv";
+          a.click();
+        }}>Export CSV</Btn>
+      }>
         <Table head={["Month", "SAFAR APIx", "DGCA index", "SAFAR fare", "DGCA fare", "Gap"]}>
           {v.months.map((m) => (
             <TR key={m.period}>
