@@ -1,7 +1,6 @@
 import { useApi } from "@/hooks/useApi";
 import { NavLink, Outlet, useNavigate } from "react-router";
 import {
-  Activity,
   BarChart3,
   Boxes,
   Flame,
@@ -9,6 +8,7 @@ import {
   Grid3x3,
   Layers,
   LogOut,
+  Menu,
   Plane,
   Play,
   Presentation,
@@ -16,6 +16,7 @@ import {
   ScrollText,
   ShieldCheck,
   TrendingUp,
+  X,
 } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "@/hooks/use-auth";
@@ -62,7 +63,7 @@ export default function AppShell() {
           </span>
           <div className="leading-none">
             <p className="neo-display text-base">SAFAR</p>
-            <p className="neo-mono text-[9px] uppercase tracking-[0.18em] opacity-70">
+            <p className="neo-mono hidden text-[9px] uppercase tracking-[0.18em] opacity-70 sm:block">
               PS 26056 · MoSPI
             </p>
           </div>
@@ -73,14 +74,14 @@ export default function AppShell() {
             <span className="neo-mono text-[10px] font-bold uppercase tracking-[0.16em] text-muted-foreground">
               APIx
             </span>
-            <span className="neo-display text-2xl">
+            <span className="neo-display text-xl sm:text-2xl">
               {headline ? headline.index.toFixed(2) : "—"}
             </span>
             <span className="neo-mono text-[10px] text-muted-foreground">
               {headline?.date ?? ""}
             </span>
           </div>
-          <div className="flex items-center gap-1.5">
+          <div className="flex flex-wrap items-center gap-1.5">
             <Tag tone="paper">MoM {headline ? `${headline.momPct >= 0 ? "+" : ""}${headline.momPct.toFixed(2)}%` : "—"}</Tag>
             <Tag tone="red">YoY {headline ? `${headline.yoy >= 0 ? "+" : ""}${headline.yoy.toFixed(2)}%` : "—"}</Tag>
             <Tag tone="green">Basket ₹{headline?.avgFare.toLocaleString("en-IN") ?? "—"}</Tag>
@@ -88,16 +89,17 @@ export default function AppShell() {
         </div>
 
         <div className="flex items-center gap-2 border-l-[3px] border-[#0b0b0b] px-3 py-2">
-          <Btn tone="yellow" onClick={run} disabled={busy}>
+          <Btn tone="yellow" onClick={run} disabled={busy} className="px-2 py-1.5 sm:px-3">
             <Play className="h-3.5 w-3.5" />
-            {busy ? "Collecting…" : "Run pipeline"}
+            <span className="hidden sm:inline">{busy ? "Collecting…" : "Run pipeline"}</span>
           </Btn>
           <button
             className="neo-2 neo-shadow-xs neo-press flex h-8 w-8 items-center justify-center bg-white lg:hidden"
             onClick={() => setOpen((v) => !v)}
             aria-label="Toggle navigation"
+            aria-expanded={open}
           >
-            <Activity className="h-4 w-4" />
+            {open ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
           </button>
         </div>
       </header>
